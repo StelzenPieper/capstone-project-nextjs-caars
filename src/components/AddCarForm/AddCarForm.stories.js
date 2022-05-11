@@ -1,4 +1,4 @@
-import AddCarForm from '../components/AddCarForm';
+import AddCarForm from '/src/components/AddCarForm/AddCarForm';
 
 export default {
 	title: 'Forms',

@@ -7,7 +7,7 @@ import {
 	ModalHeader,
 	ModalTitle,
 } from './Modal.styled';
-import AddCarForm from './AddCarForm';
+import AddCarForm from '../AddCarForm/AddCarForm';
 
 function AddCarModal(props) {
 	if (!props.show) {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AddButton } from '../src/components/Button.styled';
-import Modal from '../src/components/Modal';
+import Modal from '../src/components/Modal/Modal';
 
 export default function Home() {
 	const [show, setShow] = useState(false);
