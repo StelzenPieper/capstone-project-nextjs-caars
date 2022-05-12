@@ -1,25 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import StyledForm from './AddCarForm.styled';
 import { Button } from '../Button.styled';
-import useStore from '../useStore';
+import useStore from '../../hooks/useStore';
 
 export default function AddCarForm() {
 	const fetchVehicleData = useStore(state => state.fetchVehicleData);
-
-	useEffect(() => {
-		fetchVehicleData(
-			'https://vindecodervehicle.com/api/v1/?id=caarsde&key=v9c7ah5xvc18vlztcvaj7cu7bs3e&vin=TMBJJ7NEOGO112922&getMoreData'
-		);
-	}, [fetchVehicleData]);
+	const [vinValue, setVinValue] = useState();
 
 	return (
-		<StyledForm>
+		<StyledForm
+			onSubmit={event => {
+				event.preventDefault();
+				fetchVehicleData(
+					`https://vindecodervehicle.com/api/v1/?id=caarsde&key=v9c7ah5xvc18vlztcvaj7cu7bs3e&vin=${vinValue}&getMoreData`
+				);
+			}}
+		>
 			<input
 				required
 				type="text"
 				name="vin"
 				placeholder="VIN eingeben..."
 				data-testid="vin"
+				minLength="17"
+				onChange={event => {
+					setVinValue(event.target.value);
+				}}
 			/>
 			<input
 				type="text"
