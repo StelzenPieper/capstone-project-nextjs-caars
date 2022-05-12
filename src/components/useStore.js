@@ -1,7 +1,7 @@
 import create from 'zustand';
 
 const useStore = create(set => ({
-	vehicleData: {},
+	vehicleData: { carData: [] },
 	fetchVehicleData: async url => {
 		try {
 			const response = await fetch(url);

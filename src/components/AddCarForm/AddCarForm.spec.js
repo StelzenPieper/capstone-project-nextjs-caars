@@ -6,9 +6,15 @@ describe('AddCarForm', () => {
 	it("renders an input form to add a new car to the user's profile", () => {
 		render(<AddCarForm />);
 
-		const input = screen.getByTestId('vin');
+		const inputVin = screen.getByTestId('vin');
+		const inputLicensplate = screen.getByTestId('licensplate');
+		const inputRegisterdate = screen.getByTestId('registerdate');
 
-		expect(input).toHaveAttribute('placeholder', 'VIN eingeben...');
-		expect(input).toHaveAttribute('required');
+		expect(inputVin).toHaveAttribute('placeholder', 'VIN eingeben...');
+		expect(inputVin).toHaveAttribute('required');
+
+		expect(inputLicensplate).toHaveAttribute('placeholder', 'Kennzeichen eingeben...');
+
+		expect(inputRegisterdate).toHaveAttribute('required');
 	});
 });

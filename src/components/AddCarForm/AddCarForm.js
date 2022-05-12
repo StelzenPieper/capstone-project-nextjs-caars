@@ -23,11 +23,11 @@ export default function AddCarForm() {
 			/>
 			<input
 				type="text"
-				name="kennzeichen"
+				name="licensplate"
 				placeholder="Kennzeichen eingeben..."
-				data-testid="kennzeichen"
+				data-testid="licensplate"
 			/>
-			<input required type="date" name="zulassungsdatum" data-testd="zulassungsdatum" />
+			<input required type="date" name="registerdate" data-testid="registerdate" />
 			<Button type="submit">Fahrzeug hinzufügen</Button>
 		</StyledForm>
 	);
