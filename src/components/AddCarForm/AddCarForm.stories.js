@@ -1,7 +1,7 @@
 import AddCarForm from '/src/components/AddCarForm/AddCarForm';
 
 export default {
-	title: 'Forms',
+	title: 'Components/Forms',
 	component: AddCarForm,
 };
 
