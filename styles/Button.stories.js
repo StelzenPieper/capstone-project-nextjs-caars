@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, AddButton } from './Button.styled';
+import { Button, AddButton } from './Buttons.styled';
 
 const config = {
 	title: 'Components/Buttons',

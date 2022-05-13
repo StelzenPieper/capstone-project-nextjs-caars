@@ -1,34 +1,28 @@
-import {
-	Modal,
-	ModalBody,
-	ModalButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalTitle,
-} from './Modal.styled';
 import AddCarForm from '../AddCarForm/AddCarForm';
+import StyledDivs from '../../../styles/Divs.styled';
+import Typography from '../../../styles/Typography';
+import StyledButtons from '../../../styles/Buttons.styled';
 
 function AddCarModal(props) {
 	if (!props.show) {
 		return null;
 	}
 	return (
-		<Modal onClick={props.onClose}>
-			<ModalContent onClick={event => event.stopPropagation()}>
-				<ModalHeader>
-					<ModalTitle>Fahrzeug hinzufügen</ModalTitle>
-				</ModalHeader>
-				<ModalBody>
+		<StyledDivs variant="modal" onClick={props.onClose}>
+			<StyledDivs variant="modalContent" onClick={event => event.stopPropagation()}>
+				<StyledDivs variant="modalHeader">
+					<Typography variant="h4">Fahrzeug hinzufügen</Typography>
+				</StyledDivs>
+				<StyledDivs variant="modalBody">
 					<AddCarForm />
-				</ModalBody>
-				<ModalFooter>
-					<ModalButton type="button" onClick={props.onClose}>
+				</StyledDivs>
+				<StyledDivs variant="modalFooter">
+					<StyledButtons variant="modalButton" type="button" onClick={props.onClose}>
 						abbrechen
-					</ModalButton>
-				</ModalFooter>
-			</ModalContent>
-		</Modal>
+					</StyledButtons>
+				</StyledDivs>
+			</StyledDivs>
+		</StyledDivs>
 	);
 }
 

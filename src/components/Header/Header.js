@@ -1,26 +1,29 @@
 import StyledHeader from './Header.styled';
 import Image from 'next/image';
+import Link from 'next/link';
+import StyledButtons from '../../../styles/Buttons.styled';
+import StyledDivs from '../../../styles/Divs.styled';
 
 export default function HeaderItem() {
-	const profileImgLoader = ({ width, height, randomizer }) => {
-		return `https://source.unsplash.com/random/${width}x${height}/?${randomizer}`;
+	const profileImgLoader = ({ randomizer }) => {
+		return `https://source.unsplash.com/random/?${randomizer}`;
 	};
 
 	return (
 		<StyledHeader>
-			<h1>caars</h1>
-			<div>
+			<Link passHref href="/">
+				<StyledButtons variant="logo">caars</StyledButtons>
+			</Link>
+			<StyledDivs variant="userImgLogoSmall">
 				<Image
 					loader={profileImgLoader}
-					src="me.png"
-					randomizer="face"
+					src="profileImage"
+					randomizer="person"
 					alt="Picture of the author"
-					width={60}
-					height={60}
 					layout="fill"
 					objectFit="cover"
 				/>
-			</div>
+			</StyledDivs>
 		</StyledHeader>
 	);
 }

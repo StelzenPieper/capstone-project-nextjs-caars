@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AddButton } from '../src/components/Button.styled';
+import StyledButtons from '../styles/Buttons.styled';
 import Modal from '../src/components/Modal/Modal';
 
 export default function Home() {
@@ -7,8 +7,9 @@ export default function Home() {
 
 	return (
 		<>
-			<h1>caars</h1>
-			<AddButton onClick={() => setShow(true)}>+</AddButton>
+			<StyledButtons variant="addCarButton" onClick={() => setShow(true)}>
+				+
+			</StyledButtons>
 			<Modal show={show} onClose={() => setShow(false)} />
 		</>
 	);

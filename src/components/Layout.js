@@ -1,18 +1,12 @@
 import Header from './Header/Header';
 import NavBar from './NavBar/NavBar';
+import Main from '../../styles/Main.styled';
 
 export default function Layout({ children }) {
-	// styles the main html tag
-	const styles = {
-		margin: '9vh 0 0 0 ',
-		display: 'flex',
-		flexDirection: 'column',
-	};
-
 	return (
 		<>
 			<Header />
-			<main style={styles}>{children}</main>
+			<Main>{children}</Main>
 			<NavBar />
 		</>
 	);

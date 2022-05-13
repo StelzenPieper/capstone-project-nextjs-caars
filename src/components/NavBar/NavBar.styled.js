@@ -13,11 +13,6 @@ const StyledNavBar = styled.nav`
 	bottom: 0;
 	left: 0;
 	z-index: 1000;
-
-	a {
-		align-self: center;
-		color: hsl(264, 100%, 50%);
-	}
 `;
 
 export default StyledNavBar;
