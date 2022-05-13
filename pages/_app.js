@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import Layout from '../src/components/Layout';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<GlobalStyle />
-			<Component {...pageProps} />
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
 		</>
 	);
 }
