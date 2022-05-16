@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import StyledForm from './AddCarForm.styled';
-import { Button } from '../Button.styled';
+import StyledButtons from '../../../styles/Buttons.styled';
 import useStore from '../../hooks/useStore';
 
 export default function AddCarForm() {
@@ -26,7 +26,9 @@ export default function AddCarForm() {
 					setVinValue(event.target.value);
 				}}
 			/>
-			<Button type="submit">Fahrzeug hinzufügen</Button>
+			<StyledButtons variant="standardButton" type="submit">
+				Fahrzeug hinzufügen
+			</StyledButtons>
 		</StyledForm>
 	);
 }
