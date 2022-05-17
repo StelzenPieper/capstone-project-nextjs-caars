@@ -13,9 +13,12 @@ const useStore = create(
 					set(state => {
 						return { myVehicles: [...state.myVehicles, { ...data, vinValue }] };
 					});
-					console.log(data);
+					console.log(data, `vinValue: ${vinValue}`);
 				} catch (error) {
-					console.error('Something went wrong: ${error}');
+					console.error(`Ooops we had an error: ${error}`);
+					alert(
+						'Wir konnten zu deiner VIN leider keine Daten finden. Bitte überpürfe deine Eingabe und verusche dein Fahrzeug erneut hinzuzufügen.'
+					);
 				}
 			},
 		}),
