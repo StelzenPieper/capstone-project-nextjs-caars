@@ -1,28 +1,49 @@
 import AddCarForm from '../AddCarForm/AddCarForm';
-import StyledDivs from '../../../styles/Divs.styled';
 import Typography from '../../../styles/Typography';
-import StyledButtons from '../../../styles/Buttons.styled';
+import StyledButton from '../../../styles/StyledButton';
+import StyledFlex from '../../../styles/StyledFlex';
 
 function AddCarModal(props) {
 	if (!props.show) {
 		return null;
 	}
 	return (
-		<StyledDivs variant="modal" onClick={props.onClose}>
-			<StyledDivs variant="modalContent" onClick={event => event.stopPropagation()}>
-				<StyledDivs variant="modalHeader">
-					<Typography variant="h4">Fahrzeug hinzufügen</Typography>
-				</StyledDivs>
-				<StyledDivs variant="modalBody">
+		<StyledFlex
+			justifyContent="center"
+			alignContent="center"
+			position="fixed"
+			top="0"
+			right="0"
+			bottom="0"
+			left="0"
+			background="var(--transparent)"
+			onClick={props.onClose}
+		>
+			<StyledFlex
+				width="85%"
+				height="auto"
+				margin="20px"
+				borderRadius="8px"
+				boxShadow="var(--box-shadow)"
+				justifyContent="center"
+				alignContent="center"
+				onClick={event => event.stopPropagation()}
+			>
+				<StyledFlex margin="40px 0 0 0">
+					<Typography textAlign="center" variant="h4">
+						Fahrzeug hinzufügen
+					</Typography>
+				</StyledFlex>
+				<StyledFlex>
 					<AddCarForm />
-				</StyledDivs>
-				<StyledDivs variant="modalFooter">
-					<StyledButtons variant="modalButton" type="button" onClick={props.onClose}>
+				</StyledFlex>
+				<StyledFlex margin="0 0 40px 0">
+					<StyledButton variant="text" type="button" onClick={props.onClose}>
 						abbrechen
-					</StyledButtons>
-				</StyledDivs>
-			</StyledDivs>
-		</StyledDivs>
+					</StyledButton>
+				</StyledFlex>
+			</StyledFlex>
+		</StyledFlex>
 	);
 }
 

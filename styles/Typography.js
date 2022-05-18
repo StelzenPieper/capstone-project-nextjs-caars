@@ -56,8 +56,18 @@ export default function Typography({ children, variant, component, ...rest }) {
 const StyledH1 = styled.h1``;
 const StyledH2 = styled.h2``;
 const StyledH3 = styled.h3``;
-const StyledH4 = styled.h4``;
+const StyledH4 = styled.h4`
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 400;
+	text-decoration: ${({ textDecoration = 'none' }) => textDecoration};
+	color: ${({ color = 'black' }) => color};
+	text-align: ${({ textAlign = '' }) => textAlign};
+`;
 const StyledH5 = styled.h5``;
 const StyledH6 = styled.h6``;
-const StyledP = styled.p``;
+const StyledP = styled.p`
+	font-size: 1rem;
+	font-weight: 300;
+`;
 const StyledBodyText = styled.p``;
