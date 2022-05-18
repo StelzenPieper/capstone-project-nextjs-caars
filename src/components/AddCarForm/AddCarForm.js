@@ -5,6 +5,7 @@ import useStore from '../../hooks/useStore';
 
 export default function AddCarForm() {
 	const fetchVehicleData = useStore(state => state.fetchVehicleData);
+	const vinError = useStore(state => state.vinError);
 
 	const [vinValue, setVinValue] = useState();
 
@@ -17,6 +18,7 @@ export default function AddCarForm() {
 		>
 			<input
 				required
+				id="vinInput"
 				type="text"
 				name="vin"
 				placeholder="VIN eingeben..."
@@ -26,6 +28,8 @@ export default function AddCarForm() {
 					setVinValue(event.target.value);
 				}}
 			/>
+			{/* vin Erro currently does not reset and only toggles on and off */}
+			{!vinError && <p>check deine Eingabe!</p>}
 			<StyledButtons variant="standardButton" type="submit">
 				Fahrzeug hinzufügen
 			</StyledButtons>
