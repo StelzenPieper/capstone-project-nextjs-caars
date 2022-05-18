@@ -7,7 +7,7 @@ import SVGIcon from '../../assets/SVGIcon/SVGIcon';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
-	const [mounted, setMounted] = useState(false);
+	const [mounted, setMounted] = useState(true);
 
 	useEffect(() => {
 		setMounted(true);

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledFlex = styled.div`
+const StyledDiv = styled.div`
 	margin: ${({ margin = '0px' }) => margin};
 	padding: ${({ padding = '0px' }) => padding};
 	width: ${({ width = 'auto' }) => width};
@@ -16,4 +16,4 @@ const StyledFlex = styled.div`
 	bottom: ${({ bottom = '' }) => bottom};
 `;
 
-export default StyledFlex;
+export default StyledDiv;
