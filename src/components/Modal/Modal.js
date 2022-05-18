@@ -10,7 +10,7 @@ function AddCarModal(props) {
 	return (
 		<StyledFlex
 			justifyContent="center"
-			alignContent="center"
+			alignItems="center"
 			position="fixed"
 			top="0"
 			right="0"
@@ -26,7 +26,7 @@ function AddCarModal(props) {
 				borderRadius="8px"
 				boxShadow="var(--box-shadow)"
 				justifyContent="center"
-				alignContent="center"
+				alignItems="center"
 				onClick={event => event.stopPropagation()}
 			>
 				<StyledFlex margin="40px 0 0 0">
