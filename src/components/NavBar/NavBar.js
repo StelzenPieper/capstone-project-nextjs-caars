@@ -3,7 +3,7 @@ import StyledNavBar from './NavBar.styled';
 import StyledButton from '../../../styles/StyledButton';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
-import SVGIcon from '../../assets/SVGIcon/SVGIcon';
+import SVGIcon from '../../assets/SVGIcon/SVGIcons';
 
 export default function NavBarItem() {
 	const [show, setShow] = useState(false);
