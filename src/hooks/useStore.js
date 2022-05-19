@@ -1,5 +1,6 @@
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
+import { nanoid } from 'nanoid';
 
 const useStore = create(
 	persist(
@@ -11,7 +12,12 @@ const useStore = create(
 					const response = await fetch(url);
 					const data = await response.json();
 					set(state => {
-						return { myVehicles: [...state.myVehicles, { ...data, vinValue }] };
+						return {
+							myVehicles: [
+								...state.myVehicles,
+								{ ...data, vinValue, caarsId: nanoid() },
+							],
+						};
 					});
 					console.log(data);
 				} catch (error) {
