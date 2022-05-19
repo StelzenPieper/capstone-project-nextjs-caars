@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import StyledForm from './AddCarForm.styled';
-import StyledButtons from '../../../styles/Buttons.styled';
+import StyledButton from '../../../styles/StyledButton';
 import useStore from '../../hooks/useStore';
 
 export default function AddCarForm() {
@@ -17,6 +17,7 @@ export default function AddCarForm() {
 		>
 			<input
 				required
+				autoFocus
 				type="text"
 				name="vin"
 				placeholder="VIN eingeben..."
@@ -26,9 +27,9 @@ export default function AddCarForm() {
 					setVinValue(event.target.value);
 				}}
 			/>
-			<StyledButtons variant="standardButton" type="submit">
+			<StyledButton variant="contained" type="submit">
 				Fahrzeug hinzufügen
-			</StyledButtons>
+			</StyledButton>
 		</StyledForm>
 	);
 }
