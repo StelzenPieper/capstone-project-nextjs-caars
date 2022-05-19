@@ -1,16 +1,11 @@
-import { useState } from 'react';
-import StyledButtons from '../styles/Buttons.styled';
-import Modal from '../src/components/Modal/Modal';
+import dynamic from 'next/dynamic';
+//import CardGrid from '../src/components/CardGrid/CardGrid';
 
 export default function Home() {
-	const [show, setShow] = useState(false);
+	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
+	const CardGrid = dynamic(() => import('../src/components/CardGrid/CardGrid'), {
+		ssr: false, // This line important.
+	});
 
-	return (
-		<>
-			<StyledButtons variant="addCarButton" onClick={() => setShow(true)}>
-				+
-			</StyledButtons>
-			<Modal show={show} onClose={() => setShow(false)} />
-		</>
-	);
+	return <CardGrid />;
 }

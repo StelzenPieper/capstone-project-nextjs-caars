@@ -1,8 +1,8 @@
 import StyledHeader from './Header.styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import StyledButtons from '../../../styles/Buttons.styled';
-import StyledDivs from '../../../styles/Divs.styled';
+import StyledButton from '../../../styles/StyledButton';
+import StyledFlex from '../../../styles/StyledFlex';
 
 export default function HeaderItem() {
 	const profileImgLoader = ({ randomizer }) => {
@@ -12,9 +12,20 @@ export default function HeaderItem() {
 	return (
 		<StyledHeader>
 			<Link passHref href="/">
-				<StyledButtons variant="logo">caars</StyledButtons>
+				<StyledButton type="button" variant="logo">
+					caars
+				</StyledButton>
 			</Link>
-			<StyledDivs variant="userImgLogoSmall">
+			<StyledFlex
+				width="60px"
+				height="60px"
+				borderRadius="60px"
+				margin="0 1rem 0 0"
+				border="2px solid hsl(264, 100%, 50%)"
+				objectFit="cover"
+				overflow="hidden"
+				cursor="pointer"
+			>
 				<Image
 					loader={profileImgLoader}
 					src="profileImage"
@@ -23,7 +34,7 @@ export default function HeaderItem() {
 					layout="fill"
 					objectFit="cover"
 				/>
-			</StyledDivs>
+			</StyledFlex>
 		</StyledHeader>
 	);
 }
