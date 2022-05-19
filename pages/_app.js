@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import Layout from '../src/components/Layout';
+import Layout from '../styles/Layout';
 import GlobalStyle from '../styles/GlobalStyle';
 
 function MyApp({ Component, pageProps }) {

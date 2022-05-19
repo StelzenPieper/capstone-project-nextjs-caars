@@ -16,6 +16,7 @@ const useStore = create(
 					console.log(data);
 				} catch (error) {
 					console.error('Something went wrong: ${error}');
+					/* setState Error setzen und rendern im Formular */
 				}
 			},
 		}),
