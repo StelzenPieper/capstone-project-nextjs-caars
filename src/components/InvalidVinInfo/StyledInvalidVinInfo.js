@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const InvalidVinInfo = styled.div`
-	margin: 10px 20px 0 20px;
-	height: 100px;
+	margin: 10px 20% 0 20%;
+	height: auto;
 	position: fixed;
-	top: 50px;
+	top: 6.4vh;
 	z-index: 102;
-	background: red;
+	background: var(--warning-background);
 	padding: 15px 20px 10px 20px;
 	border-radius: var(--border-radius);
 	animation-name: slidein;
