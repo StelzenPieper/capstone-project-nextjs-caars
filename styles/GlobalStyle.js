@@ -11,8 +11,10 @@ const GlobalStyle = createGlobalStyle`
   --secondary-color : white;
   --primary-background : white;
   --secondary-background : hsl(264, 100%, 50%);
+  --warning-background : rgb(255, 0, 0, 0.95);
   --box-shadow : 0px 8px 15px rgba(108, 122, 137);
   --transparent : transparent;
+  --border-radius : 8px;
 }
 
   body {

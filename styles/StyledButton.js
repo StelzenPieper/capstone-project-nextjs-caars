@@ -13,10 +13,6 @@ const StyledButton = styled.button`
 			color: var(--primary-color);
 			background: var(--transparent);
 			border: none;
-			&:hover {
-				color: var(--secondary-color);
-				background: var(--primary-color);
-			}
 		`}
 
 	${({ variant }) =>
@@ -27,6 +23,7 @@ const StyledButton = styled.button`
 			border: 2px solid var(--primary-color);
 			&:hover {
 				color: var(--secondary-color);
+				background: var(--primary-color);
 				border-color: var(--secondary-color);
 			}
 		`}
