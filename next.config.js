@@ -6,4 +6,10 @@ const nextConfig = {
 	},
 };
 
-module.exports = nextConfig;
+module.exports = {
+	nextConfig,
+	env: {
+		VIN_API_KEY: process.env.VIN_API_KEY,
+		VIN_API_ID: process.env.VIN_API_ID,
+	},
+};

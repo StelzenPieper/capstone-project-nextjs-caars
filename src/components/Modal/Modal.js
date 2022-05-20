@@ -8,7 +8,7 @@ function Modal() {
 	const toggleModalState = useStore(state => state.toggleModalState);
 	const modalState = useStore(state => state.modalState);
 
-	if (modalState === true) {
+	if (modalState) {
 		return (
 			<StyledFlex
 				justifyContent="center"

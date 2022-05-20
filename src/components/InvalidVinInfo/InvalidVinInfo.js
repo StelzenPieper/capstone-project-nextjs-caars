@@ -5,7 +5,7 @@ import useStore from '../../hooks/useStore';
 export default function InvalidVinMessage() {
 	const vinFound = useStore(state => state.vinFound);
 
-	if (vinFound === false) {
+	if (!vinFound) {
 		return (
 			<InvalidVinInfo>
 				<Typography variant="h4" color="white" textAlign="center">

@@ -12,7 +12,7 @@ const useStore = create(
 				set(state => ({ modalState: !state.modalState }));
 			},
 			fetchVehicleData: async vinValue => {
-				const url = `https://vindecodervehicle.com/api/v1/?id=caarsde&key=v9c7ah5xvc18vlztcvaj7cu7bs3e&vin=${vinValue}&getMoreData`;
+				const url = `https://vindecodervehicle.com/api/v1/?id=${process.env.VIN_API_ID}&key=${process.env.VIN_API_KEY}&vin=${vinValue}&getMoreData`;
 				try {
 					const response = await fetch(url);
 					const data = await response.json();
@@ -25,7 +25,6 @@ const useStore = create(
 						};
 					});
 					set({ vinFound: true });
-					console.log(data, `vinValue: ${vinValue}`);
 				} catch (error) {
 					console.error(`Ooops we had an error: ${error}`);
 					set({ vinFound: false });

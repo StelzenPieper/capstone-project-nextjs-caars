@@ -18,7 +18,12 @@ export default function NavBar() {
 					<SVGIcon variant="home" size="35px" color="hsl(264, 100%, 50%)" />
 				</StyledButton>
 			</Link>
-			<StyledButton type="button" variant="text" onClick={handleClick}>
+			<StyledButton
+				type="button"
+				variant="text"
+				aria-label="open add new car form"
+				onClick={handleClick}
+			>
 				<SVGIcon variant="add" size="35px" color="hsl(264, 100%, 50%)" />
 			</StyledButton>
 		</StyledNavBar>
