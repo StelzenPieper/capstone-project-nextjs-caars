@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   --secondary-background : hsl(264, 100%, 50%);
   --box-shadow : 0px 8px 15px rgba(108, 122, 137);
   --transparent : transparent;
+  --border-radius : 8px;
 }
 
   body {

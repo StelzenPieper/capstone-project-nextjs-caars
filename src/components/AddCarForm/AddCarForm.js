@@ -5,7 +5,6 @@ import useStore from '../../hooks/useStore';
 
 export default function AddCarForm() {
 	const fetchVehicleData = useStore(state => state.fetchVehicleData);
-	const vinFound = useStore(state => state.vinFound);
 
 	const [vinValue, setVinValue] = useState();
 
@@ -19,6 +18,7 @@ export default function AddCarForm() {
 			<input
 				required
 				autoFocus
+				id="vinEingabe"
 				type="text"
 				name="vin"
 				placeholder="VIN eingeben..."
@@ -28,8 +28,7 @@ export default function AddCarForm() {
 					setVinValue(event.target.value);
 				}}
 			/>
-			{!vinFound && <p>check deine Eingabe!</p>}
-			<StyledButton variant="standardButton" type="submit">
+			<StyledButton variant="outlined" type="submit">
 				Fahrzeug hinzufügen
 			</StyledButton>
 		</StyledForm>

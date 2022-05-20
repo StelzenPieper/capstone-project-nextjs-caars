@@ -7,6 +7,10 @@ const useStore = create(
 		set => ({
 			myVehicles: [],
 			vinFound: '',
+			modalState: false,
+			toggleModalState: () => {
+				set(state => ({ modalState: !state.modalState }));
+			},
 			fetchVehicleData: async vinValue => {
 				const url = `https://vindecodervehicle.com/api/v1/?id=caarsde&key=v9c7ah5xvc18vlztcvaj7cu7bs3e&vin=${vinValue}&getMoreData`;
 				try {

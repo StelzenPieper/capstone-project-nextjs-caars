@@ -23,6 +23,8 @@ const StyledFlex = styled.div`
 	top: ${({ top = '' }) => top};
 	bottom: ${({ bottom = '' }) => bottom};
 
+	z-index: ${({ zIndex = '' }) => zIndex};
+
 	object-fit: ${({ objectFit = '' }) => objectFit};
 	overflow: ${({ overflow = '' }) => overflow};
 
