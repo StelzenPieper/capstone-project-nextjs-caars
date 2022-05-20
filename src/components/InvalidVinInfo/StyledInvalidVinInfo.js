@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const InvalidVinInfo = styled.div`
 	margin: 10px 20% 0 20%;
+	align-self: center;
 	height: auto;
 	position: fixed;
 	top: 6.4vh;
