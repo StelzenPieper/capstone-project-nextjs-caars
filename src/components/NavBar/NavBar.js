@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import StyledNavBar from './NavBar.styled';
 import StyledButton from '../../../styles/StyledButton';
-import { useState } from 'react';
-import Modal from '../Modal/Modal';
-import SVGIcon from '../../assets/SVGIcon/SVGIcon';
+import SVGIcon from '../../assets/SVGIcon/SVGIcons';
+import useStore from '../../hooks/useStore';
 
-export default function NavBarItem() {
-	const [show, setShow] = useState(false);
+export default function NavBar() {
+	const toggleModalState = useStore(state => state.toggleModalState);
+
+	const handleClick = () => {
+		toggleModalState();
+	};
 
 	return (
 		<StyledNavBar>
@@ -15,10 +18,14 @@ export default function NavBarItem() {
 					<SVGIcon variant="home" size="35px" color="hsl(264, 100%, 50%)" />
 				</StyledButton>
 			</Link>
-			<StyledButton type="button" variant="text" onClick={() => setShow(true)}>
+			<StyledButton
+				type="button"
+				variant="text"
+				aria-label="open add new car form"
+				onClick={handleClick}
+			>
 				<SVGIcon variant="add" size="35px" color="hsl(264, 100%, 50%)" />
 			</StyledButton>
-			<Modal show={show} onClose={() => setShow(false)} />
 		</StyledNavBar>
 	);
 }

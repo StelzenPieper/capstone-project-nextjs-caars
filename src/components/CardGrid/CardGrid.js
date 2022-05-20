@@ -1,7 +1,7 @@
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledDiv from '../../../styles/StyledDiv';
 import Typography from '../../../styles/Typography';
-import SVGIcon from '../../assets/SVGIcon/SVGIcon';
+import SVGIcon from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../hooks/useStore';
 
 export default function Card() {

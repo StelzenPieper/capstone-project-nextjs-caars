@@ -18,6 +18,7 @@ export default function AddCarForm() {
 			<input
 				required
 				autoFocus
+				id="vinEingabe"
 				type="text"
 				name="vin"
 				placeholder="VIN eingeben..."
@@ -27,7 +28,7 @@ export default function AddCarForm() {
 					setVinValue(event.target.value);
 				}}
 			/>
-			<StyledButton variant="contained" type="submit">
+			<StyledButton variant="outlined" type="submit">
 				Fahrzeug hinzufügen
 			</StyledButton>
 		</StyledForm>
