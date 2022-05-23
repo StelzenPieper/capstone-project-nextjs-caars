@@ -2,7 +2,7 @@ import Link from 'next/link';
 import StyledNavBar from './NavBar.styled';
 import StyledButton from '../../../styles/StyledButton';
 import SVGIcon from '../../assets/SVGIcon/SVGIcons';
-import useStore from '../../hooks/useStore';
+import useStore from '../../lib/hooks/useStore';
 
 export default function NavBar() {
 	const toggleModalState = useStore(state => state.toggleModalState);

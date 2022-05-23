@@ -2,7 +2,7 @@ import StyledFlex from '../../../styles/StyledFlex';
 import StyledDiv from '../../../styles/StyledDiv';
 import Typography from '../../../styles/Typography';
 import SVGIcon from '../../assets/SVGIcon/SVGIcons';
-import useStore from '../../hooks/useStore';
+import useStore from '../../lib/hooks/useStore';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
