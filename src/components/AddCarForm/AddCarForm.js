@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import StyledForm from './AddCarForm.styled';
 import StyledButton from '../../../styles/StyledButton';
 import useStore from '../../lib/hooks/useStore';
 
 export default function AddCarForm() {
 	const fetchVehicleData = useStore(state => state.fetchVehicleData);
-	const toggleModalState = useStore(state => state.toggleModalState);
-	const vinValidity = useStore(state => state.vinValidity);
-	const toggleVinValidity = useStore(state => state.toggleVinValidity);
 
 	const [vinValue, setVinValue] = useState();
-
-	useEffect(() => {
-		if (vinValidity) {
-			toggleModalState();
-			toggleVinValidity();
-		}
-	});
 
 	return (
 		<StyledForm

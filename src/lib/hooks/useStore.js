@@ -6,14 +6,7 @@ const useStore = create(
 	persist(
 		set => ({
 			myVehicles: [],
-			vinValidity: false,
-			toggleVinValidity: () => {
-				set(state => ({ vinValidity: !state.vinValidity }));
-			},
-			displayVinError: false,
-			toggleDisplayVinError: () => {
-				set(state => ({ displayVinError: !state.displayVinError }));
-			},
+			vinValidity: true,
 			modalState: false,
 			toggleModalState: () => {
 				set(state => ({ modalState: !state.modalState }));
@@ -31,12 +24,10 @@ const useStore = create(
 							],
 						};
 					});
-					set({ vinValidity: true });
-					set({ displayVinError: false });
+					set({ vinValidity: true, modalState: false });
 				} catch (error) {
 					console.error(`Ooops we had an error: ${error}`);
 					set({ vinValidity: false });
-					set({ displayVinError: true });
 				}
 			},
 		}),

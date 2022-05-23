@@ -1,19 +1,17 @@
-import InvalidVinMessage from './StyledInvalidVinMessage';
+import StyledInvalidVinMessage from '../InvalidVinMessage/StyledInvalidVinMessage';
 import Typography from '../../../styles/Typography';
 import useStore from '../../lib/hooks/useStore';
 
 export default function DisplayInvalidVinMessage() {
-	const displayVinError = useStore(state => state.displayVinError);
+	const vinValidity = useStore(state => state.vinValidity);
 
-	if (displayVinError) {
+	if (!vinValidity) {
 		return (
-			<InvalidVinMessage>
+			<StyledInvalidVinMessage>
 				<Typography variant="h4" color="white" textAlign="center">
 					VIN Eingabe inkorrekt! Bitte überprüfe deine VIN und probiere es erneut.
 				</Typography>
-			</InvalidVinMessage>
+			</StyledInvalidVinMessage>
 		);
-	} else {
-		return null;
 	}
 }

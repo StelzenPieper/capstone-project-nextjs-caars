@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InvalidVinMessage = styled.div`
+const StyledInvalidVinMessage = styled.div`
 	margin: 10px 20% 0 20%;
 	align-self: center;
 	height: auto;
@@ -24,4 +24,4 @@ const InvalidVinMessage = styled.div`
 	}
 `;
 
-export default InvalidVinMessage;
+export default StyledInvalidVinMessage;
