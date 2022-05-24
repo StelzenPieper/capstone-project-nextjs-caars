@@ -20,7 +20,7 @@ const useStore = create(
 						return {
 							myVehicles: [
 								...state.myVehicles,
-								{ ...data, vinValue, caarsId: nanoid() },
+								{ ...data, vinValue, caarsId: nanoid(), favorite: false },
 							],
 						};
 					});
