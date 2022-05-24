@@ -13,7 +13,6 @@ export default function FavoriteCar({ caarsId }) {
 			onClick={event => {
 				event.preventDefault();
 				toggleFavoriteCar(caarsId);
-				console.log(favoriteCar);
 			}}
 		>
 			{favoriteCar ? (
