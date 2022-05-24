@@ -5,7 +5,7 @@ import SVGIcon from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../hooks/useStore';
 import FavoriteCar from '../FavoriteCar/FavoriteCar';
 
-export default function Card() {
+export default function CardGrid() {
 	const myVehicles = useStore(state => state.myVehicles);
 
 	return (

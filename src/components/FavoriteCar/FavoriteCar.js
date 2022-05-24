@@ -5,7 +5,7 @@ import useStore from '../../hooks/useStore';
 export default function FavoriteCar({ caarsId }) {
 	const toggleFavoriteCar = useStore(state => state.toggleFavoriteCar);
 	const myVehicles = useStore(state => state.myVehicles);
-	const index = myVehicles.find(element => element.caarsId === caarsId).favorite;
+	const favoriteCar = myVehicles.find(element => element.caarsId === caarsId).favorite;
 
 	return (
 		<StyledButton
@@ -13,14 +13,13 @@ export default function FavoriteCar({ caarsId }) {
 			onClick={event => {
 				event.preventDefault();
 				toggleFavoriteCar(caarsId);
-				console.log(caarsId);
-				console.log(index);
+				console.log(favoriteCar);
 			}}
 		>
-			{index.favorite ? (
+			{favoriteCar ? (
 				<SVGIcons variant="favorite" size="20px" />
 			) : (
-				<SVGIcons variant="favorite" size="20px" color="red" />
+				<SVGIcons variant="favorite" size="20px" color="lightgrey" />
 			)}
 		</StyledButton>
 	);
