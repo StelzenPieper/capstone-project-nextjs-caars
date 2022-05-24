@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import useStore from '../src/lib/hooks/useStore';
 
 export default function Home() {
 	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
@@ -16,9 +17,11 @@ export default function Home() {
 		}
 	);
 
+	const vinValidity = useStore(state => state.vinValidity);
+
 	return (
 		<>
-			<InvalidVinMessage />
+			{!vinValidity && <InvalidVinMessage />}
 			<Modal />
 			<CardGrid />
 		</>
