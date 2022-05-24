@@ -18,6 +18,7 @@ export default function AddCarForm() {
 			<input
 				required
 				autoFocus
+				value={vinValue}
 				id="vinEingabe"
 				type="text"
 				name="vin"

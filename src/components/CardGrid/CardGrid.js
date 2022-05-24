@@ -6,7 +6,6 @@ import useStore from '../../lib/hooks/useStore';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
-
 	return (
 		<StyledFlex margin="4vh 10px 12vh 10px" gap="40px" alignItems="center">
 			{myVehicles.map(vehicle => {
