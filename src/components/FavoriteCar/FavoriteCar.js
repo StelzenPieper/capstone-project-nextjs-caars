@@ -1,6 +1,6 @@
 import StyledButton from '../../../styles/StyledButton';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
-import useStore from '../../hooks/useStore';
+import useStore from '../../lib/hooks/useStore';
 
 export default function FavoriteCar({ caarsId }) {
 	const toggleFavoriteCar = useStore(state => state.toggleFavoriteCar);
