@@ -6,6 +6,8 @@ import useStore from '../../lib/hooks/useStore';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
+	const deleteVehicle = useStore(state => state.deleteVehicle);
+
 	return (
 		<StyledFlex margin="4vh 10px 12vh 10px" gap="40px" alignItems="center">
 			{myVehicles.map(vehicle => {
@@ -23,7 +25,14 @@ export default function Card() {
 							{vehicle.vehicleModelSeriesName}
 						</Typography>
 						<StyledDiv height="10px" position="absolute" top="10px" right="10px">
-							<SVGIcon variant="trash" size="15px" color="red" />
+							<button
+								type="button"
+								onClick={() => {
+									deleteVehicle(vehicle.caarsId);
+								}}
+							>
+								<SVGIcon variant="trash" size="15px" color="red" />
+							</button>
 						</StyledDiv>
 						<div>
 							<Typography variant="default">VIN: {vehicle.vinValue}</Typography>
