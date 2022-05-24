@@ -2,11 +2,13 @@ import AddCarForm from '../AddCarForm/AddCarForm';
 import Typography from '../../../styles/Typography';
 import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
-import useStore from '../../hooks/useStore';
+import useStore from '../../lib/hooks/useStore';
 
 function Modal() {
 	const toggleModalState = useStore(state => state.toggleModalState);
 	const modalState = useStore(state => state.modalState);
+	const toggleVinValidity = useStore(state => state.toggleVinValidity);
+	const vinValidity = useStore(state => state.vinValidity);
 
 	if (modalState) {
 		return (
@@ -20,7 +22,12 @@ function Modal() {
 				left="0"
 				background="var(--transparent)"
 				zIndex="100"
-				onClick={toggleModalState}
+				onClick={() => {
+					toggleModalState();
+					if (!vinValidity) {
+						toggleVinValidity();
+					}
+				}}
 			>
 				<StyledFlex
 					width="85%"

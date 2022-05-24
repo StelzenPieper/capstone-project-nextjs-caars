@@ -9,8 +9,8 @@ export default function Home() {
 		ssr: false, // This line important.
 	});
 
-	const InvalidVinInfo = dynamic(
-		() => import('../src/components/InvalidVinInfo/InvalidVinInfo'),
+	const InvalidVinMessage = dynamic(
+		() => import('../src/components/InvalidVinMessage/InvalidVinMessage'),
 		{
 			ssr: false, // This line important.
 		}
@@ -18,7 +18,7 @@ export default function Home() {
 
 	return (
 		<>
-			<InvalidVinInfo />
+			<InvalidVinMessage />
 			<Modal />
 			<CardGrid />
 		</>
