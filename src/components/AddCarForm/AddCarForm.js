@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StyledForm from './AddCarForm.styled';
 import StyledButton from '../../../styles/StyledButton';
-import useStore from '../../hooks/useStore';
+import useStore from '../../lib/hooks/useStore';
 
 export default function AddCarForm() {
 	const fetchVehicleData = useStore(state => state.fetchVehicleData);
@@ -18,6 +18,7 @@ export default function AddCarForm() {
 			<input
 				required
 				autoFocus
+				value={vinValue}
 				id="vinEingabe"
 				type="text"
 				name="vin"

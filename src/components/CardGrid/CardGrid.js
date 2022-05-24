@@ -2,12 +2,11 @@ import StyledFlex from '../../../styles/StyledFlex';
 import StyledDiv from '../../../styles/StyledDiv';
 import Typography from '../../../styles/Typography';
 import SVGIcon from '../../assets/SVGIcon/SVGIcons';
-import useStore from '../../hooks/useStore';
+import useStore from '../../lib/hooks/useStore';
 import FavoriteCar from '../FavoriteCar/FavoriteCar';
 
 export default function CardGrid() {
 	const myVehicles = useStore(state => state.myVehicles);
-
 	return (
 		<StyledFlex margin="4vh 10px 12vh 10px" gap="40px" alignItems="center">
 			{myVehicles.map(vehicle => {
