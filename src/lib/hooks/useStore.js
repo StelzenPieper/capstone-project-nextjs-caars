@@ -7,6 +7,9 @@ const useStore = create(
 		set => ({
 			myVehicles: [],
 			vinValidity: true,
+			toggleVinValidity: () => {
+				set(state => ({ vinValidity: !state.vinValidity }));
+			},
 			modalState: false,
 			toggleModalState: () => {
 				set(state => ({ modalState: !state.modalState }));

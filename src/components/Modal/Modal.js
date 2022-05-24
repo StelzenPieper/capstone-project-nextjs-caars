@@ -7,6 +7,8 @@ import useStore from '../../lib/hooks/useStore';
 function Modal() {
 	const toggleModalState = useStore(state => state.toggleModalState);
 	const modalState = useStore(state => state.modalState);
+	const toggleVinValidity = useStore(state => state.toggleVinValidity);
+	const vinValidity = useStore(state => state.vinValidity);
 
 	if (modalState) {
 		return (
@@ -22,6 +24,9 @@ function Modal() {
 				zIndex="100"
 				onClick={() => {
 					toggleModalState();
+					if (!vinValidity) {
+						toggleVinValidity();
+					}
 				}}
 			>
 				<StyledFlex
