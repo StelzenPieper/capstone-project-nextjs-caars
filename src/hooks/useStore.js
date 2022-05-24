@@ -11,6 +11,15 @@ const useStore = create(
 			toggleModalState: () => {
 				set(state => ({ modalState: !state.modalState }));
 			},
+			toggleFavoriteCar: caarsId => {
+				set(state => ({
+					myVehicles: state.myVehicles.map(vehicle =>
+						vehicle.caarsId === caarsId
+							? { ...vehicle, favorite: !vehicle.favorite }
+							: vehicle
+					),
+				}));
+			},
 			fetchVehicleData: async vinValue => {
 				const url = `https://vindecodervehicle.com/api/v1/?id=${process.env.VIN_API_ID}&key=${process.env.VIN_API_KEY}&vin=${vinValue}&getMoreData`;
 				try {

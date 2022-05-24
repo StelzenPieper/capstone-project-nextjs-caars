@@ -21,7 +21,7 @@ export default function Card() {
 						boxShadow="var(--box-shadow)"
 						gap="5px"
 					>
-						<FavoriteCar value={vehicle.caarsId} />
+						<FavoriteCar caarsId={vehicle.caarsId} />
 						<Typography variant="h4" textDecoration="underline">
 							{vehicle.vehicleModelSeriesName}
 						</Typography>
