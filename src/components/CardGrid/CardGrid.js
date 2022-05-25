@@ -3,8 +3,9 @@ import StyledDiv from '../../../styles/StyledDiv';
 import Typography from '../../../styles/Typography';
 import SVGIcon from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
+import FavoriteCar from '../FavoriteCar/FavoriteCar';
 
-export default function Card() {
+export default function CardGrid() {
 	const myVehicles = useStore(state => state.myVehicles);
 	const deleteVehicle = useStore(state => state.deleteVehicle);
 
@@ -21,6 +22,7 @@ export default function Card() {
 						boxShadow="var(--box-shadow)"
 						gap="5px"
 					>
+						<FavoriteCar caarsId={vehicle.caarsId} />
 						<Typography variant="h4" textDecoration="underline">
 							{vehicle.vehicleModelSeriesName}
 						</Typography>
