@@ -61,6 +61,8 @@ const StyledButton = styled.button`
 			right: ${({ right = '' }) => right};
 			top: ${({ top = '' }) => top};
 			bottom: ${({ bottom = '' }) => bottom};
+
+			z-index: ${({ zIndex = '' }) => zIndex};
 		`}
 
 		${({ variant }) =>

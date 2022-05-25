@@ -1,4 +1,3 @@
-import StyledDiv from '../../../styles/StyledDiv';
 import Typography from '../../../styles/Typography';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
@@ -8,6 +7,9 @@ import StyledFlex from '../../../styles/StyledFlex';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
+	const toggleDeleteState = useStore(state => state.toggleDeleteState);
+	const setID = useStore(state => state.setID);
+	const setVehicleName = useStore(state => state.setVehicleName);
 
 	return (
 		<>
@@ -25,18 +27,27 @@ export default function Card() {
 						gap="5px"
 					>
 						<FavoriteCar caarsId={vehicle.caarsId} />
+						<StyledButton
+							caarsId={vehicle.caarsId}
+							variant="favorite"
+							position="absolute"
+							bottom="5px"
+							left="5px"
+							zIndex="10"
+							type="button"
+							onClick={event => {
+								event.preventDefault;
+								setID(vehicle.caarsId);
+								setVehicleName(vehicle.vehicleModelSeriesName);
+								toggleDeleteState();
+								console.log(vehicle.caarsId);
+							}}
+						>
+							<SVGIcons variant="trash" size="20px" color="red" />
+						</StyledButton>
 						<Typography variant="h4" textDecoration="underline">
 							{vehicle.vehicleModelSeriesName}
 						</Typography>
-						<StyledDiv
-							height="10px"
-							position="absolute"
-							bottom="10px"
-							left="10px"
-							background="var(--transparent)"
-						>
-							<SVGIcons variant="trash" size="20px" color="red" />
-						</StyledDiv>
 						<StyledFlex background="var(--transparent)" alignItems="flex-start">
 							<Typography variant="text" padding="3px">
 								VIN: {vehicle.vinValue}
