@@ -49,6 +49,25 @@ const StyledButton = styled.button`
 			border: none;
 		`}
 
+		${({ variant }) =>
+		variant === 'favorite' &&
+		css`
+			color: var(--primary-color);
+			background: var(--transparent);
+			border: none;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+		`}
+
+		${({ variant }) =>
+		variant === 'card' &&
+		css`
+			color: var(--primary-color);
+			background: var(--transparent);
+			border: none;
+		`}
+
   &:disabled {
 		color: var(--tertiary-background);
 		background: var(--secondary-background);
