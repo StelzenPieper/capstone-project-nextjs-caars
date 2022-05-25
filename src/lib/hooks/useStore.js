@@ -42,7 +42,15 @@ const useStore = create(
 					set({ vinValidity: false });
 				}
 			},
-
+			id: [],
+			setID: id => {
+				set(() => {
+					return { id: id };
+				});
+			},
+			toggleDeleteState: () => {
+				set(state => ({ deleteState: !state.deleteState }));
+			},
 			//Delete Function für die Fahrzeugdaten
 			deleteVehicle: caarsId => {
 				set(state => {

@@ -4,7 +4,7 @@ import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import useStore from '../../lib/hooks/useStore';
 
-function Modal() {
+function AddCarModal() {
 	const toggleModalState = useStore(state => state.toggleModalState);
 	const modalState = useStore(state => state.modalState);
 	const toggleVinValidity = useStore(state => state.toggleVinValidity);
@@ -60,4 +60,4 @@ function Modal() {
 	}
 }
 
-export default Modal;
+export default AddCarModal;
