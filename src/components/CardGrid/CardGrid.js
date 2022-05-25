@@ -1,18 +1,23 @@
+import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
-import StyledDiv from '../../../styles/StyledDiv';
 import Typography from '../../../styles/Typography';
-import SVGIcon from '../../assets/SVGIcon/SVGIcons';
+import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
+
 import FavoriteCar from '../FavoriteCar/FavoriteCar';
 
 export default function CardGrid() {
 	const myVehicles = useStore(state => state.myVehicles);
+	const toggleDeleteState = useStore(state => state.toggleDeleteState);
+	const setID = useStore(state => state.setID);
+	const setVehicleName = useStore(state => state.setVehicleName);
+
 	return (
 		<StyledFlex margin="4vh 10px 12vh 10px" gap="40px" alignItems="center">
 			{myVehicles.map(vehicle => {
 				return (
 					<StyledFlex
-						key={vehicle.carId}
+						key={vehicle.caarsId}
 						width="80%"
 						height="200px"
 						padding="10px"
@@ -21,12 +26,26 @@ export default function CardGrid() {
 						gap="5px"
 					>
 						<FavoriteCar caarsId={vehicle.caarsId} />
+						<StyledButton
+							caarsId={vehicle.caarsId}
+							variant="favorite"
+							position="absolute"
+							bottom="5px"
+							left="5px"
+							type="button"
+							onClick={event => {
+								event.preventDefault;
+								setID(vehicle.caarsId);
+								setVehicleName(vehicle.vehicleModelSeriesName);
+								toggleDeleteState();
+								console.log(vehicle.caarsId);
+							}}
+						>
+							<SVGIcons variant="trash" size="20px" color="red" />
+						</StyledButton>
 						<Typography variant="h4" textDecoration="underline">
 							{vehicle.vehicleModelSeriesName}
 						</Typography>
-						<StyledDiv height="10px" position="absolute" bottom="10px" left="10px">
-							<SVGIcon variant="trash" size="20px" color="red" />
-						</StyledDiv>
 						<div>
 							<Typography variant="default">VIN: {vehicle.vinValue}</Typography>
 							<Typography variant="default">

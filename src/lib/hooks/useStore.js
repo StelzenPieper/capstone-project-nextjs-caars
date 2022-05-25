@@ -42,6 +42,29 @@ const useStore = create(
 					set({ vinValidity: false });
 				}
 			},
+			id: [],
+			setID: id => {
+				set(() => {
+					return { id: id };
+				});
+			},
+			vehicleName: [],
+			setVehicleName: vehicleName => {
+				set(() => {
+					return { vehicleName: vehicleName };
+				});
+			},
+			toggleDeleteState: () => {
+				set(state => ({ deleteState: !state.deleteState }));
+			},
+			//Delete Function für die Fahrzeugdaten
+			deleteVehicle: caarsId => {
+				set(state => {
+					return {
+						myVehicles: state.myVehicles.filter(vehicle => vehicle.caarsId !== caarsId),
+					};
+				});
+			},
 		}),
 		{ name: 'caars' }
 	)

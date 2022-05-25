@@ -10,6 +10,9 @@ export default function FavoriteCar({ caarsId }) {
 	return (
 		<StyledButton
 			variant="favorite"
+			position="absolute"
+			top="5px"
+			right="5px"
 			onClick={event => {
 				event.preventDefault();
 				toggleFavoriteCar(caarsId);
