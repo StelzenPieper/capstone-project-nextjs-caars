@@ -60,6 +60,21 @@ const StyledButton = styled.button`
 			right: 5px;
 		`}
 
+		${({ variant }) =>
+		variant === 'card' &&
+		css`
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			position: relative;
+			padding: ${({ padding = '0px' }) => padding};
+			width: ${({ width = 'auto' }) => width};
+			height: ${({ height = '100%' }) => height};
+			border: none;
+			border-radius: ${({ borderRadius = '0px' }) => borderRadius};
+			box-shadow: ${({ boxShadow = 'none' }) => boxShadow};
+		`}
+
   &:disabled {
 		color: var(--tertiary-background);
 		background: var(--secondary-background);
