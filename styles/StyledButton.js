@@ -60,14 +60,6 @@ const StyledButton = styled.button`
 			right: 5px;
 		`}
 
-		${({ variant }) =>
-		variant === 'card' &&
-		css`
-			color: var(--primary-color);
-			background: var(--transparent);
-			border: none;
-		`}
-
   &:disabled {
 		color: var(--tertiary-background);
 		background: var(--secondary-background);
