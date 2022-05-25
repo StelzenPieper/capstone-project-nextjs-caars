@@ -20,11 +20,12 @@ export default function Home() {
 	const DeleteVehicle = dynamic(() => import('../src/components/DeleteVehicle/DeleteVehicle'), {
 		ssr: false, // This line important.
 	});
+
 	const deleteState = useStore(state => state.deleteState);
 
 	return (
 		<>
-			{!deleteState && <DeleteVehicle />}
+			{deleteState && <DeleteVehicle />}
 			<InvalidVinMessage />
 			<AddCarModal />
 			<CardGrid />

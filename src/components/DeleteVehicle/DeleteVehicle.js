@@ -7,13 +7,18 @@ import StyledFlex from '../../../styles/StyledFlex';
 
 export default function DeleteVehicle() {
 	const deleteVehicle = useStore(state => state.deleteVehicle);
-	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 	const id = useStore(state => state.id);
+	const vehicleName = useStore(state => state.vehicleName);
+	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 
 	return (
 		<StyledDeleteVehicle>
 			<Typography variant="h4" textAlign="center">
-				Willst du dein Fahrzeug wirklich löschen?
+				Willst du dein Fahrzeug{' '}
+				<Typography variant="h4" textAlign="center" color="red">
+					{vehicleName}
+				</Typography>{' '}
+				wirklich löschen?
 			</Typography>
 			<StyledFlex
 				flexDirection="row"

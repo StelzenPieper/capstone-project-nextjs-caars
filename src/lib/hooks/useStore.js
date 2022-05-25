@@ -48,6 +48,12 @@ const useStore = create(
 					return { id: id };
 				});
 			},
+			vehicleName: [],
+			setVehicleName: vehicleName => {
+				set(() => {
+					return { vehicleName: vehicleName };
+				});
+			},
 			toggleDeleteState: () => {
 				set(state => ({ deleteState: !state.deleteState }));
 			},

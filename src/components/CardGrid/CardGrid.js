@@ -3,12 +3,14 @@ import StyledFlex from '../../../styles/StyledFlex';
 import Typography from '../../../styles/Typography';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
+
 import FavoriteCar from '../FavoriteCar/FavoriteCar';
 
 export default function CardGrid() {
 	const myVehicles = useStore(state => state.myVehicles);
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 	const setID = useStore(state => state.setID);
+	const setVehicleName = useStore(state => state.setVehicleName);
 
 	return (
 		<StyledFlex margin="4vh 10px 12vh 10px" gap="40px" alignItems="center">
@@ -34,6 +36,7 @@ export default function CardGrid() {
 							onClick={event => {
 								event.preventDefault;
 								setID(vehicle.caarsId);
+								setVehicleName(vehicle.vehicleModelSeriesName);
 								toggleDeleteState();
 								console.log(vehicle.caarsId);
 							}}
