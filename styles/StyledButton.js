@@ -55,9 +55,12 @@ const StyledButton = styled.button`
 			color: var(--primary-color);
 			background: var(--transparent);
 			border: none;
-			position: absolute;
-			top: 5px;
-			right: 5px;
+
+			position: ${({ position = 'relative' }) => position};
+			left: ${({ left = '' }) => left};
+			right: ${({ right = '' }) => right};
+			top: ${({ top = '' }) => top};
+			bottom: ${({ bottom = '' }) => bottom};
 		`}
 
 		${({ variant }) =>
