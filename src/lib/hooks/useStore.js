@@ -65,6 +65,10 @@ const useStore = create(
 					};
 				});
 			},
+			filterState: [],
+			toggleFilter: () => {
+				set(state => ({ filterState: !state.filterState }));
+			},
 		}),
 		{ name: 'caars' }
 	)

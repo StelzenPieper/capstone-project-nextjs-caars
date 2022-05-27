@@ -9,6 +9,8 @@ const StyledDiv = styled.div`
 	background: ${({ background = 'var(--primary-background)' }) => background};
 	box-shadow: ${({ boxShadow = 'none' }) => boxShadow};
 
+	align-self: ${({ alignSelf = 'center' }) => alignSelf};
+
 	position: ${({ position = 'relative' }) => position};
 	left: ${({ left = '' }) => left};
 	right: ${({ right = '' }) => right};
