@@ -65,10 +65,27 @@ const useStore = create(
 					};
 				});
 			},
-			filterState: [],
-			toggleFilter: () => {
+			// filterState: [],
+			/* toggleFilter: () => {
 				set(state => ({ filterState: !state.filterState }));
+			}, */
+			toggleFilter: favorite => {
+				set(state => {
+					return {
+						myVehicles: state.myVehicles.map(vehicle => vehicle.favorite !== favorite),
+					};
+				});
 			},
+
+			/* caarsId => {
+				set(state => ({
+					myVehicles: state.myVehicles.filter(vehicle =>
+						vehicle.caarsId === caarsId
+							? { ...vehicle, favorite: !vehicle.favorite }
+							: vehicle
+					),
+				}));
+			},*/
 		}),
 		{ name: 'caars' }
 	)
