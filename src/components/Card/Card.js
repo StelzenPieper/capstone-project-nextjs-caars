@@ -4,6 +4,7 @@ import useStore from '../../lib/hooks/useStore';
 import FavoriteCar from '../FavoriteCar/FavoriteCar';
 import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
+import StyledCard from './StyledCard';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
@@ -15,24 +16,39 @@ export default function Card() {
 		<>
 			{myVehicles.map(vehicle => {
 				return (
-					<StyledButton
+					<StyledCard
 						key={vehicle.caarsId}
-						variant="card"
-						type="button"
 						width="80%"
 						height="200px"
 						padding="10px"
 						borderRadius="8px"
 						boxShadow="var(--box-shadow)"
 						gap="5px"
+						cursor="pointer"
 					>
 						<FavoriteCar caarsId={vehicle.caarsId} />
+						<StyledFlex flexDirection="row" flexWrap="wrap" width="80%">
+							<Typography variant="h4" textDecoration="underline">
+								{vehicle.vehicleModelSeriesName}
+							</Typography>
+						</StyledFlex>
+						<StyledFlex background="var(--transparent)" alignItems="flex-start">
+							<Typography variant="text" padding="3px">
+								VIN: {vehicle.vinValue}
+							</Typography>
+							<Typography variant="text" padding="3px">
+								Kraftstoff: {vehicle.engineType}
+							</Typography>
+							<Typography variant="text" padding="3px" margin="0 0 30px 0">
+								Leistung: {vehicle.kiloWattsTo} kW ({vehicle.horsePowerFrom} PS)
+							</Typography>
+						</StyledFlex>
 						<StyledButton
 							caarsId={vehicle.caarsId}
 							variant="favorite"
 							position="absolute"
-							bottom="5px"
-							left="5px"
+							bottom="0px"
+							left="0px"
 							zIndex="10"
 							type="button"
 							onClick={event => {
@@ -45,21 +61,7 @@ export default function Card() {
 						>
 							<SVGIcons variant="trash" size="20px" color="red" />
 						</StyledButton>
-						<Typography variant="h4" textDecoration="underline">
-							{vehicle.vehicleModelSeriesName}
-						</Typography>
-						<StyledFlex background="var(--transparent)" alignItems="flex-start">
-							<Typography variant="text" padding="3px">
-								VIN: {vehicle.vinValue}
-							</Typography>
-							<Typography variant="text" padding="3px">
-								Kraftstoff: {vehicle.engineType}
-							</Typography>
-							<Typography variant="text" padding="3px">
-								Leistung: {vehicle.kiloWattsTo} kW ({vehicle.horsePowerFrom} PS)
-							</Typography>
-						</StyledFlex>
-					</StyledButton>
+					</StyledCard>
 				);
 			})}
 		</>

@@ -52,6 +52,7 @@ const StyledButton = styled.button`
 		${({ variant }) =>
 		variant === 'favorite' &&
 		css`
+			margin: ${({ margin = '0px' }) => margin};
 			color: var(--primary-color);
 			background: var(--transparent);
 			border: none;
