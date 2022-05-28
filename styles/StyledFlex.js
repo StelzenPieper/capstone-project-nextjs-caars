@@ -15,6 +15,7 @@ const StyledFlex = styled.div`
 	justify-content: ${({ justifyContent = 'flext-start' }) => justifyContent};
 	align-items: ${({ alignItems = 'flext-start' }) => alignItems};
 	gap: ${({ gap = '0px' }) => gap};
+	flex-wrap: ${({ flexWrap = 'nowrap' }) => flexWrap};
 
 	position: ${({ position = 'relative' }) => position};
 
