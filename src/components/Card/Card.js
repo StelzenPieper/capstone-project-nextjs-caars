@@ -6,15 +6,17 @@ import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledCard from './StyledCard';
 
-export default function Card() {
-	const myVehicles = useStore(state => state.myVehicles);
+export default function Card({ data }) {
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 	const setID = useStore(state => state.setID);
 	const setVehicleName = useStore(state => state.setVehicleName);
+	const sortedVehicles = data.sort((a, b) => b.favorite - a.favorite);
+
+	//const trueFirst = arr.sort((a, b) => Number(b.bool) - Number(a.bool));
 
 	return (
 		<>
-			{myVehicles.map(vehicle => {
+			{sortedVehicles.map(vehicle => {
 				return (
 					<StyledCard
 						key={vehicle.caarsId}
