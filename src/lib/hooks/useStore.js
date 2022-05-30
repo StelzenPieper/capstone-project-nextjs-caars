@@ -57,13 +57,16 @@ const useStore = create(
 			toggleDeleteState: () => {
 				set(state => ({ deleteState: !state.deleteState }));
 			},
-			//Delete Function für die Fahrzeugdaten
 			deleteVehicle: caarsId => {
 				set(state => {
 					return {
 						myVehicles: state.myVehicles.filter(vehicle => vehicle.caarsId !== caarsId),
 					};
 				});
+			},
+			filterState: false,
+			toggleFilter: () => {
+				set(state => ({ filterState: !state.filterState }));
 			},
 		}),
 		{ name: 'caars' }

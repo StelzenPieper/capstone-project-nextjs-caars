@@ -7,16 +7,16 @@ import StyledFlex from '../../../styles/StyledFlex';
 import StyledCard from './StyledCard';
 import _useStore from '../../lib/hooks/_useStore';
 
-export default function Card() {
-	const myVehicles = useStore(state => state.myVehicles);
+export default function Card({ data }) {
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 	const setID = useStore(state => state.setID);
 	const setVehicleName = useStore(state => state.setVehicleName);
 	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
+	const sortedVehicles = data.sort((a, b) => b.favorite - a.favorite);
 
 	return (
 		<>
-			{myVehicles.map(vehicle => {
+			{sortedVehicles.map(vehicle => {
 				return (
 					<StyledCard
 						key={vehicle.caarsId}
