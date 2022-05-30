@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import useStore from '../src/lib/hooks/useStore';
+import _useStore from '../src/lib/hooks/_useStore';
 
 export default function Home() {
 	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
@@ -9,13 +10,16 @@ export default function Home() {
 	const AddCarModal = dynamic(() => import('../src/components/Modals/AddCarModal'), {
 		ssr: false, // This line important.
 	});
-
 	const InvalidVinMessage = dynamic(
 		() => import('../src/components/InvalidVinMessage/InvalidVinMessage'),
 		{
 			ssr: false, // This line important.
 		}
 	);
+	const CarProfile = dynamic(() => import('../src/components/CarProfile/CarProfile'), {
+		ssr: false, // This line important.
+	});
+	const CarProfileState = _useStore(state => state.CarProfileState);
 
 	const DeleteVehicle = dynamic(() => import('../src/components/DeleteVehicle/DeleteVehicle'), {
 		ssr: false, // This line important.
@@ -29,6 +33,7 @@ export default function Home() {
 			<InvalidVinMessage />
 			<AddCarModal />
 			<CardGrid />
+			{CarProfileState && <CarProfile />}
 		</>
 	);
 }

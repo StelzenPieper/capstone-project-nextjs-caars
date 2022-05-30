@@ -5,12 +5,14 @@ import FavoriteCar from '../FavoriteCar/FavoriteCar';
 import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledCard from './StyledCard';
+import _useStore from '../../lib/hooks/_useStore';
 
 export default function Card() {
 	const myVehicles = useStore(state => state.myVehicles);
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 	const setID = useStore(state => state.setID);
 	const setVehicleName = useStore(state => state.setVehicleName);
+	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
 
 	return (
 		<>
@@ -25,6 +27,11 @@ export default function Card() {
 						boxShadow="var(--box-shadow)"
 						gap="5px"
 						cursor="pointer"
+						onClick={event => {
+							event.preventDefault();
+							toggleCarProfile();
+							setID(vehicle.caarsId);
+						}}
 					>
 						<FavoriteCar caarsId={vehicle.caarsId} />
 						<StyledFlex flexDirection="row" flexWrap="wrap" width="80%">
@@ -52,7 +59,7 @@ export default function Card() {
 							zIndex="10"
 							type="button"
 							onClick={event => {
-								event.preventDefault;
+								event.preventDefault();
 								setID(vehicle.caarsId);
 								setVehicleName(vehicle.vehicleModelSeriesName);
 								toggleDeleteState();
