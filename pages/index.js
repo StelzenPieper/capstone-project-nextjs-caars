@@ -27,6 +27,11 @@ export default function Home() {
 
 	const deleteState = useStore(state => state.deleteState);
 
+	const ImgUpload = dynamic(() => import('../src/components/ImgUpload/ImgUpload'), {
+		ssr: false, // This line important.
+	});
+	const AddCarImageState = _useStore(state => state.AddCarImageState);
+
 	return (
 		<>
 			{deleteState && <DeleteVehicle />}
@@ -34,6 +39,7 @@ export default function Home() {
 			<AddCarModal />
 			<CardGrid />
 			{CarProfileState && <CarProfile />}
+			{AddCarImageState && <ImgUpload />}
 		</>
 	);
 }

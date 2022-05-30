@@ -18,13 +18,13 @@ const StyledButton = styled.button`
 	${({ variant }) =>
 		variant === 'outlined' &&
 		css`
-			color: var(--primary-color);
-			background: var(--transparent);
-			border: 2px solid var(--primary-color);
+			color: ${({ color = 'var(--primary-color)' }) => color};
+			background: ${({ background = 'var(--transparent)' }) => background};
+			border: ${({ border = '2px solid var(--primary-color)' }) => border};
 			&:hover {
-				color: var(--secondary-color);
-				background: var(--primary-color);
-				border-color: var(--secondary-color);
+				color: ${({ color = 'var(--secondary-color)' }) => color};
+				background: ${({ background = 'var(--transparent)' }) => background};
+				border-color: ${({ borderColor = 'var(--secondary-color)' }) => borderColor};
 			}
 		`}
 

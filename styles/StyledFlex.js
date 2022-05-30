@@ -14,6 +14,7 @@ const StyledFlex = styled.div`
 	flex-direction: ${({ flexDirection = 'column' }) => flexDirection};
 	justify-content: ${({ justifyContent = 'flext-start' }) => justifyContent};
 	align-items: ${({ alignItems = 'flext-start' }) => alignItems};
+	align-self: ${({ alignSelf = '' }) => alignSelf};
 	gap: ${({ gap = '0px' }) => gap};
 	flex-wrap: ${({ flexWrap = 'nowrap' }) => flexWrap};
 

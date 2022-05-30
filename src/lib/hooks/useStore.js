@@ -32,7 +32,13 @@ const useStore = create(
 						return {
 							myVehicles: [
 								...state.myVehicles,
-								{ ...data, vinValue, caarsId: nanoid(), favorite: false },
+								{
+									...data,
+									vinValue,
+									caarsId: nanoid(),
+									favorite: false,
+									images: [],
+								},
 							],
 						};
 					});
@@ -68,6 +74,28 @@ const useStore = create(
 			toggleFilter: () => {
 				set(state => ({ filterState: !state.filterState }));
 			},
+
+			addCarImage: (caarsId, previewImage) => {
+				set(state => ({
+					myVehicles: state.myVehicles.map(vehicle =>
+						vehicle.caarsId === caarsId
+							? { ...vehicle, images: [...vehicle.images, previewImage.public_id] }
+							: vehicle
+					),
+				}));
+			},
+
+			/*
+			addCarImage: (caarsId, previewImage) => {
+				set(state => ({
+					myVehicles: state.myVehicles.map(vehicle =>
+						vehicle.caarsId === caarsId
+							? { ...vehicle, images: [...[images], previewImage.public_id] }
+							: vehicle
+					),
+				}));
+			},
+			*/
 		}),
 		{ name: 'caars' }
 	)

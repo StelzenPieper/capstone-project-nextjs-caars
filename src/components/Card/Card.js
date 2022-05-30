@@ -10,6 +10,7 @@ import _useStore from '../../lib/hooks/_useStore';
 export default function Card({ data }) {
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
 	const setID = useStore(state => state.setID);
+	const id = useStore(state => state.id);
 	const setVehicleName = useStore(state => state.setVehicleName);
 	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
 	const sortedVehicles = data.sort((a, b) => b.favorite - a.favorite);
@@ -18,38 +19,43 @@ export default function Card({ data }) {
 		<>
 			{sortedVehicles.map(vehicle => {
 				return (
-					<StyledCard
+					<StyledFlex
 						key={vehicle.caarsId}
 						width="80%"
 						height="200px"
-						padding="10px"
 						borderRadius="8px"
 						boxShadow="var(--box-shadow)"
 						gap="5px"
 						cursor="pointer"
-						onClick={event => {
-							event.preventDefault();
-							toggleCarProfile();
-							setID(vehicle.caarsId);
-						}}
 					>
+						<StyledCard
+							padding="10px"
+							cursor="pointer"
+							onClick={event => {
+								event.preventDefault();
+								setID(vehicle.caarsId);
+								toggleCarProfile(id);
+								console.log(id);
+							}}
+						>
+							<StyledFlex flexDirection="row" flexWrap="wrap" width="80%">
+								<Typography variant="h4" textDecoration="underline">
+									{vehicle.vehicleModelSeriesName}
+								</Typography>
+							</StyledFlex>
+							<StyledFlex background="var(--transparent)" alignItems="flex-start">
+								<Typography variant="text" padding="3px">
+									VIN: {vehicle.vinValue}
+								</Typography>
+								<Typography variant="text" padding="3px">
+									Kraftstoff: {vehicle.engineType}
+								</Typography>
+								<Typography variant="text" padding="3px" margin="0 0 30px 0">
+									Leistung: {vehicle.kiloWattsTo} kW ({vehicle.horsePowerFrom} PS)
+								</Typography>
+							</StyledFlex>
+						</StyledCard>
 						<FavoriteCar caarsId={vehicle.caarsId} />
-						<StyledFlex flexDirection="row" flexWrap="wrap" width="80%">
-							<Typography variant="h4" textDecoration="underline">
-								{vehicle.vehicleModelSeriesName}
-							</Typography>
-						</StyledFlex>
-						<StyledFlex background="var(--transparent)" alignItems="flex-start">
-							<Typography variant="text" padding="3px">
-								VIN: {vehicle.vinValue}
-							</Typography>
-							<Typography variant="text" padding="3px">
-								Kraftstoff: {vehicle.engineType}
-							</Typography>
-							<Typography variant="text" padding="3px" margin="0 0 30px 0">
-								Leistung: {vehicle.kiloWattsTo} kW ({vehicle.horsePowerFrom} PS)
-							</Typography>
-						</StyledFlex>
 						<StyledButton
 							caarsId={vehicle.caarsId}
 							variant="favorite"
@@ -68,7 +74,7 @@ export default function Card({ data }) {
 						>
 							<SVGIcons variant="trash" size="20px" color="red" />
 						</StyledButton>
-					</StyledCard>
+					</StyledFlex>
 				);
 			})}
 		</>
