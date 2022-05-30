@@ -1,23 +1,25 @@
-import { CheckBox, CheckBoxLabel, CheckBoxWrapper } from './StyledCarFilter';
-import StyledDiv from '../../../styles/StyledDiv';
+import { StyledCheckBoxLabel } from './/StyledCheckBoxLabel';
+import { StyledCheckBox } from './StyledCheckBox';
+// import StyledDiv from '../../../styles/StyledDiv';
 import useStore from '../../lib/hooks/useStore';
+import StyledDiv from '../../../styles/StyledDiv';
 
 export default function CarFilter({ checkState }) {
 	const toggleFilter = useStore(state => state.toggleFilter);
 
 	return (
 		<StyledDiv margin="2vh 0 0 0 ">
-			<CheckBoxWrapper>
-				<CheckBox
+			<StyledDiv position="relative">
+				<StyledCheckBox
 					checked={checkState}
 					id="checkbox"
 					type="checkbox"
-					onClick={() => {
+					onChange={() => {
 						toggleFilter();
 					}}
 				/>
-				<CheckBoxLabel htmlFor="checkbox" />
-			</CheckBoxWrapper>
+				<StyledCheckBoxLabel htmlFor="checkbox" />
+			</StyledDiv>
 		</StyledDiv>
 	);
 }

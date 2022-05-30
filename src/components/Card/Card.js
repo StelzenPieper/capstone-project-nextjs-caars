@@ -12,8 +12,6 @@ export default function Card({ data }) {
 	const setVehicleName = useStore(state => state.setVehicleName);
 	const sortedVehicles = data.sort((a, b) => b.favorite - a.favorite);
 
-	//const trueFirst = arr.sort((a, b) => Number(b.bool) - Number(a.bool));
-
 	return (
 		<>
 			{sortedVehicles.map(vehicle => {
