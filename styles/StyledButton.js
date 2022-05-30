@@ -52,12 +52,33 @@ const StyledButton = styled.button`
 		${({ variant }) =>
 		variant === 'favorite' &&
 		css`
+			margin: ${({ margin = '0px' }) => margin};
 			color: var(--primary-color);
 			background: var(--transparent);
 			border: none;
-			position: absolute;
-			top: 5px;
-			right: 5px;
+
+			position: ${({ position = 'relative' }) => position};
+			left: ${({ left = '' }) => left};
+			right: ${({ right = '' }) => right};
+			top: ${({ top = '' }) => top};
+			bottom: ${({ bottom = '' }) => bottom};
+
+			z-index: ${({ zIndex = '' }) => zIndex};
+		`}
+
+		${({ variant }) =>
+		variant === 'card' &&
+		css`
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			position: relative;
+			padding: ${({ padding = '0px' }) => padding};
+			width: ${({ width = 'auto' }) => width};
+			height: ${({ height = '100%' }) => height};
+			border: none;
+			border-radius: ${({ borderRadius = '0px' }) => borderRadius};
+			box-shadow: ${({ boxShadow = 'none' }) => boxShadow};
 		`}
 
   &:disabled {

@@ -6,7 +6,7 @@ import useStore from '../../lib/hooks/useStore';
 export default function AddCarForm() {
 	const fetchVehicleData = useStore(state => state.fetchVehicleData);
 
-	const [vinValue, setVinValue] = useState();
+	const [vinValue, setVinValue] = useState('');
 
 	return (
 		<StyledForm
