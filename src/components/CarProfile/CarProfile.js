@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import Typography from '../../../styles/Typography';
@@ -11,6 +12,8 @@ export default function CarProfile() {
 	const id = useStore(state => state.id);
 	const data = myVehicles.find(vehicle => vehicle.caarsId === id);
 	const toggleAddCarImage = _useStore(state => state.toggleAddCarImage);
+
+	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/${data.images}`;
 
 	return (
 		<StyledFlex
@@ -37,6 +40,7 @@ export default function CarProfile() {
 				onClick={event => {
 					event.preventDefault();
 					toggleCarProfile();
+					console.log(carImages);
 				}}
 			>
 				<SVGIcons variant="xBox" size="20px" color="white" />
@@ -44,23 +48,38 @@ export default function CarProfile() {
 			<Typography variant="h4" textDecoration="underline" color="white">
 				{data.vehicleModelSeriesName}
 			</Typography>
-			{/*
+			{data.images.length > 0 && (
+				<StyledFlex
+					margin="2vh 0 0 0"
+					height="100%"
+					width="130%"
+					borderRadius="8px"
+					objectFit="cover"
+					overflow="hidden"
+					cursor="pointer"
+					alignContent="center"
+					justifyContent="center"
+					alignSelf="center"
+				>
+					{data.images.map(carImage => {
+						return (
+							<Image
+								key={carImage}
+								src={carImages}
+								alt={carImages}
+								layout="fill"
+								objectFit="cover"
+							/>
+						);
+					})}
+				</StyledFlex>
+			)}
 			<StyledFlex
-				margin="8vh 0 0 0"
-				height="200px"
-				width="300px"
-				borderRadius="8px"
-				objectFit="cover"
-				overflow="hidden"
-				cursor="pointer"
-				alignContent="center"
-				justifyContent="center"
+				background="var(--transparent)"
 				alignSelf="center"
+				padding="2vh 0 0 0"
+				height="200px"
 			>
-				<Image src={props.file.url} alt={props.file.url} layout="fill" objectFit="cover" />
-			</StyledFlex>
-			*/}
-			<StyledFlex background="var(--transparent)" alignSelf="center" justifyContent="center">
 				<StyledButton
 					variant="outlined"
 					color="var(--secondary-color)"

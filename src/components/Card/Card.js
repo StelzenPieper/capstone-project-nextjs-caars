@@ -6,6 +6,7 @@ import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledCard from './StyledCard';
 import _useStore from '../../lib/hooks/_useStore';
+import Image from 'next/image';
 
 export default function Card({ data }) {
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
@@ -15,6 +16,8 @@ export default function Card({ data }) {
 	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
 	const sortedVehicles = data.sort((a, b) => b.favorite - a.favorite);
 
+	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/`;
+
 	return (
 		<>
 			{sortedVehicles.map(vehicle => {
@@ -22,28 +25,59 @@ export default function Card({ data }) {
 					<StyledFlex
 						key={vehicle.caarsId}
 						width="80%"
-						height="200px"
+						height="auto"
 						borderRadius="8px"
 						boxShadow="var(--box-shadow)"
 						gap="5px"
 						cursor="pointer"
 					>
 						<StyledCard
-							padding="10px"
+							padding="10px 0 10px 0"
 							cursor="pointer"
 							onClick={event => {
 								event.preventDefault();
 								setID(vehicle.caarsId);
 								toggleCarProfile(id);
-								console.log(id);
+								console.log(id, carImages);
 							}}
 						>
-							<StyledFlex flexDirection="row" flexWrap="wrap" width="80%">
+							<StyledFlex
+								flexDirection="row"
+								flexWrap="wrap"
+								width="80%"
+								padding="0 10px 0 10px"
+							>
 								<Typography variant="h4" textDecoration="underline">
 									{vehicle.vehicleModelSeriesName}
 								</Typography>
 							</StyledFlex>
-							<StyledFlex background="var(--transparent)" alignItems="flex-start">
+							{vehicle.images.length > 0 && (
+								<StyledFlex
+									margin="2vh 0 0 0"
+									height="20vh"
+									width="100%"
+									borderRadius="none"
+									objectFit="cover"
+									overflow="hidden"
+									cursor="pointer"
+									alignContent="center"
+									justifyContent="center"
+									alignSelf="center"
+								>
+									<Image
+										key={vehicle.caarsId}
+										src={carImages + vehicle.images}
+										alt={carImages + vehicle.images}
+										layout="fill"
+										objectFit="cover"
+									/>
+								</StyledFlex>
+							)}
+							<StyledFlex
+								background="var(--transparent)"
+								alignItems="flex-start"
+								padding="0 10px 0 10px"
+							>
 								<Typography variant="text" padding="3px">
 									VIN: {vehicle.vinValue}
 								</Typography>
@@ -60,8 +94,8 @@ export default function Card({ data }) {
 							caarsId={vehicle.caarsId}
 							variant="favorite"
 							position="absolute"
-							bottom="0px"
-							left="0px"
+							bottom="5px"
+							right="5px"
 							zIndex="10"
 							type="button"
 							onClick={event => {
