@@ -76,7 +76,7 @@ export default function Card({ data }) {
 							<StyledFlex
 								background="var(--transparent)"
 								alignItems="flex-start"
-								padding="0 10px 0 10px"
+								padding="10px 10px 0 10px"
 							>
 								<Typography variant="text" padding="3px">
 									VIN: {vehicle.vinValue}
