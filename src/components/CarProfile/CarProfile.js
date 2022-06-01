@@ -40,7 +40,6 @@ export default function CarProfile() {
 				onClick={event => {
 					event.preventDefault();
 					toggleCarProfile();
-					console.log(carImages);
 				}}
 			>
 				<SVGIcons variant="xBox" size="20px" color="white" />
