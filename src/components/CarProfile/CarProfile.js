@@ -20,21 +20,17 @@ export default function CarProfile() {
 		<StyledFlex
 			width="100%"
 			height="100%"
-			padding="11vh 8vw 11vh 8vw"
+			padding="0 8vw 12vh 8vw"
 			justifyContent="flex-start"
 			alignItems="flex-start"
-			position="fixed"
-			top="0"
-			right="0"
-			bottom="0"
-			left="0"
 			background="var(--secondary-background)"
 			zIndex="100"
+			overflow="scroll"
 		>
 			<StyledButton
 				variant="favorite"
 				position="absolute"
-				top="10vh"
+				top="5vh"
 				right="2vw"
 				zIndex="10"
 				type="button"
@@ -45,9 +41,18 @@ export default function CarProfile() {
 			>
 				<SVGIcons variant="xBox" size="20px" color="white" />
 			</StyledButton>
-			<Typography variant="h4" textDecoration="underline" color="white">
-				{data.vehicleModelSeriesName}
-			</Typography>
+			<StyledFlex
+				width="100%"
+				height="100%"
+				padding="6vh 8vw 0 8vw"
+				justifyContent="flex-start"
+				alignItems="flex-start"
+				background="var(--secondary-background)"
+			>
+				<Typography variant="h4" textDecoration="underline" color="white">
+					{data.vehicleModelSeriesName}
+				</Typography>
+			</StyledFlex>
 			{data.images.length > 0 && (
 				<StyledFlex
 					margin="2vh 0 0 0"
@@ -63,25 +68,27 @@ export default function CarProfile() {
 				</StyledFlex>
 			)}
 			<StyledFlex
+				margin="30px 0 30px 0"
 				background="var(--transparent)"
-				alignSelf="center"
 				padding="2vh 0 0 0"
-				height="200px"
+				position="absolute"
+				top="6vh"
+				right="2vw"
 			>
 				<StyledButton
 					variant="outlined"
 					color="var(--secondary-color)"
-					border="2px solid var(--secondary-color)"
+					border="none"
 					type="button"
 					onClick={event => {
 						event.preventDefault();
 						toggleAddCarImage();
 					}}
 				>
-					Bild hinzufügen
+					<SVGIcons variant="imageUpload" />
 				</StyledButton>
 			</StyledFlex>
-			<StyledFlex background="var(transparent)">
+			<StyledFlex padding="0 2vw 0 8vw" background="var(--secondary-background)">
 				<Typography variant="text" padding="3px" color="white" lineHeight="25px">
 					VIN: {data.vinValue}
 					<br />
@@ -101,26 +108,36 @@ export default function CarProfile() {
 				</Typography>
 			</StyledFlex>
 			<StyledFlex
-				background="var(--transparent)"
-				alignSelf="center"
+				margin="30px 0 20px 0"
 				padding="2vh 0 0 0"
-				height="200px"
+				background="var(--transparent)"
+				//alignSelf="center"
 			>
-				<StyledButton
-					variant="outlined"
-					color="var(--secondary-color)"
-					border="2px solid var(--secondary-color)"
-					type="button"
-					onClick={event => {
-						event.preventDefault();
-						toggleAddDocument();
-					}}
+				<StyledFlex
+					background="var(--transparent)"
+					flexDirection="row"
+					gap="40px"
+					alignItems="center"
 				>
-					Dokument hinzufügen
-				</StyledButton>
+					<StyledButton
+						variant="outlined"
+						color="var(--primary-color)"
+						background="var(--secondary-color)"
+						type="button"
+						onClick={event => {
+							event.preventDefault();
+							toggleAddDocument();
+						}}
+					>
+						<SVGIcons variant="fileUpload" />
+					</StyledButton>
+					<Typography variant="h4" color="white">
+						Meine Dokumente:
+					</Typography>
+				</StyledFlex>
 			</StyledFlex>
 			{data.documents.length > 0 && (
-				<StyledFlex background="var(--transparent)">
+				<StyledFlex background="var(--transparent)" width="100%" alignItems="center">
 					{data.documents.map(document => {
 						return (
 							<StyledButton
@@ -128,10 +145,13 @@ export default function CarProfile() {
 								variant="favorite"
 								onClick={event => {
 									event.preventDefault();
-									window.open(docuemntUrl + document);
+									window.open(docuemntUrl + document[1]);
 								}}
 							>
 								<SVGIcons variant="viewDocument" color="white" />
+								<Typography variant="text" color="white">
+									{document[0]}
+								</Typography>
 							</StyledButton>
 						);
 					})}

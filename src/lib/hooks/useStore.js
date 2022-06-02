@@ -84,13 +84,16 @@ const useStore = create(
 					),
 				}));
 			},
-			addDocument: (caarsId, previewDocument) => {
+			addDocument: (caarsId, previewDocument, documentTitel) => {
 				set(state => ({
 					myVehicles: state.myVehicles.map(vehicle =>
 						vehicle.caarsId === caarsId
 							? {
 									...vehicle,
-									documents: [...vehicle.documents, previewDocument.public_id],
+									documents: [
+										...vehicle.documents,
+										[documentTitel, previewDocument.public_id],
+									],
 							  }
 							: vehicle
 					),

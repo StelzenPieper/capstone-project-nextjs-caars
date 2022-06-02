@@ -70,7 +70,7 @@ export default function Card({ data }) {
 							<StyledFlex
 								height="30vh"
 								width="100%"
-								borderRadius="0 0 8px 8px"
+								borderRadius="0"
 								objectFit="contain"
 								overflow="hidden"
 								cursor="pointer"
@@ -82,7 +82,7 @@ export default function Card({ data }) {
 						<StyledButton
 							caarsId={vehicle.caarsId}
 							variant="favorite"
-							position="absolute"
+							position="none"
 							bottom="30vh"
 							right="5px"
 							zIndex="10"

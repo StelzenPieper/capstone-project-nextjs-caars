@@ -102,7 +102,7 @@ export default function ImgUpload() {
 						<label htmlFor="imageUpload">
 							<StyledFlex alignItems="center" cursor="pointer">
 								<SVGIcons
-									variant="uploadImage"
+									variant="imageUpload"
 									size="50px"
 									color="var(--primary-color)"
 								/>

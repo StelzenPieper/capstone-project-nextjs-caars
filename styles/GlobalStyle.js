@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
   --border-radius : 8px;
 }
 
+html{
+  background: var(--primary-color);
+}
+
   body {
     background: var(--primary-background);
     margin: 0;

@@ -22,7 +22,7 @@ export default function ImageSlider({ data }) {
 	}
 
 	return (
-		<StyledFlex height="100%" width="100%" overflow="hidden" cursor="pointer">
+		<StyledFlex height="40vh" width="100%" overflow="hidden" cursor="pointer">
 			<StyledFlex flexDirection="row" justifyContent="space-between" alignContent="center">
 				<StyledButton
 					type="button"
@@ -46,28 +46,13 @@ export default function ImageSlider({ data }) {
 				>
 					<SVGIcons variant="arrowRight" color="white" />
 				</StyledButton>
-				<div>
-					<Image
-						src={imageArray[index]}
-						layout="fill"
-						objectFit="cover"
-						alt={imageArray[index]}
-					/>
-				</div>
+				<Image
+					src={imageArray[index]}
+					layout="fill"
+					objectFit="cover"
+					alt={imageArray[index]}
+				/>
 			</StyledFlex>
-			{/* 
-			{data.images.map(carImageKey => {
-				return (
-					<Image
-						key={carImageKey}
-						src={carImages + carImageKey}
-						alt={carImages + carImageKey}
-						layout="fill"
-						objectFit="cover"
-					/>
-				);
-			})}
-			*/}
 		</StyledFlex>
 	);
 }

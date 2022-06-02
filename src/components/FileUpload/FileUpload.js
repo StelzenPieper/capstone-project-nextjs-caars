@@ -44,7 +44,6 @@ export default function FileUpload() {
 			url: previewDocument.url,
 			width: previewDocument.width,
 			height: previewDocument.height,
-			titel: documentTitel,
 		};
 		console.log(data);
 	};
@@ -135,8 +134,8 @@ export default function FileUpload() {
 								onClick={event => {
 									event.preventDefault();
 									toggleAddDocument();
-									addDocument(id, previewDocument);
-									console.log(previewDocument);
+									addDocument(id, previewDocument, documentTitel);
+									console.log(previewDocument, documentTitel);
 								}}
 							>
 								Dokument hochladen

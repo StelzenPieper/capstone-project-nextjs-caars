@@ -42,7 +42,7 @@ export default function Home() {
 			{deleteState && <DeleteVehicle />}
 			<InvalidVinMessage />
 			<AddCarModal />
-			<CardGrid />
+			{!CarProfileState && <CardGrid />}
 			{CarProfileState && <CarProfile />}
 			{AddCarImageState && <ImgUpload />}
 			{AddDocumentState && <FileUpload />}

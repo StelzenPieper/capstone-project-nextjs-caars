@@ -21,6 +21,7 @@ const StyledButton = styled.button`
 			color: ${({ color = 'var(--primary-color)' }) => color};
 			background: ${({ background = 'var(--transparent)' }) => background};
 			border: ${({ border = '2px solid var(--primary-color)' }) => border};
+			box-shadow: ${({ boxShadow = '' }) => boxShadow};
 			&:hover {
 				color: ${({ color = 'var(--secondary-color)' }) => color};
 				background: ${({ background = 'var(--transparent)' }) => background};
