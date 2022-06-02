@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import Typography from '../../../styles/Typography';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
 import _useStore from '../../lib/hooks/_useStore';
+import ImageSlider from '../ImageSlider/ImageSlider';
 
 export default function CarProfile() {
 	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
@@ -12,8 +12,9 @@ export default function CarProfile() {
 	const id = useStore(state => state.id);
 	const data = myVehicles.find(vehicle => vehicle.caarsId === id);
 	const toggleAddCarImage = _useStore(state => state.toggleAddCarImage);
+	const toggleAddDocument = _useStore(state => state.toggleAddDocument);
 
-	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/${data.images}`;
+	const docuemntUrl = `https://res.cloudinary.com/caarsde/image/upload/v1654174773/`;
 
 	return (
 		<StyledFlex
@@ -51,26 +52,14 @@ export default function CarProfile() {
 				<StyledFlex
 					margin="2vh 0 0 0"
 					height="100%"
-					width="130%"
-					borderRadius="8px"
-					objectFit="cover"
+					width="120%"
+					borderRadius="none"
+					objectFit="contain"
 					overflow="hidden"
 					cursor="pointer"
-					alignContent="center"
-					justifyContent="center"
 					alignSelf="center"
 				>
-					{data.images.map(carImage => {
-						return (
-							<Image
-								key={carImage}
-								src={carImages}
-								alt={carImages}
-								layout="fill"
-								objectFit="cover"
-							/>
-						);
-					})}
+					<ImageSlider data={data} />
 				</StyledFlex>
 			)}
 			<StyledFlex
@@ -111,6 +100,43 @@ export default function CarProfile() {
 					Zylinder: {data.cylinders}
 				</Typography>
 			</StyledFlex>
+			<StyledFlex
+				background="var(--transparent)"
+				alignSelf="center"
+				padding="2vh 0 0 0"
+				height="200px"
+			>
+				<StyledButton
+					variant="outlined"
+					color="var(--secondary-color)"
+					border="2px solid var(--secondary-color)"
+					type="button"
+					onClick={event => {
+						event.preventDefault();
+						toggleAddDocument();
+					}}
+				>
+					Dokument hinzufügen
+				</StyledButton>
+			</StyledFlex>
+			{data.documents.length > 0 && (
+				<StyledFlex background="var(--transparent)">
+					{data.documents.map(document => {
+						return (
+							<StyledButton
+								key={document}
+								variant="favorite"
+								onClick={event => {
+									event.preventDefault();
+									window.open(docuemntUrl + document);
+								}}
+							>
+								<SVGIcons variant="viewDocument" color="white" />
+							</StyledButton>
+						);
+					})}
+				</StyledFlex>
+			)}
 		</StyledFlex>
 	);
 }

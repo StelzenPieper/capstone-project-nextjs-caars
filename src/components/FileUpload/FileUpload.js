@@ -1,24 +1,25 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { StyledImgUpload, StyledInput } from './StyledImgUpload';
+import { StyledFileUpload, StyledInput } from './StyledFileUpload';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledButton from '../../../styles/StyledButton';
 import _useStore from '../../lib/hooks/_useStore';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
 
-export default function ImgUpload() {
+export default function FileUpload() {
 	const CLOUD = process.env.CLOUDINARY_CLOUD;
-	const PRESET = process.env.CLOUDINARY_PRESET;
+	const PRESET = process.env.CLOUDINARY_PRESET_DOCUMENTS;
 
-	const toggleAddCarImage = _useStore(state => state.toggleAddCarImage);
+	const toggleAddDocument = _useStore(state => state.toggleAddDocument);
 
-	const addCarImage = useStore(state => state.addCarImage);
+	const addDocument = useStore(state => state.addDocument);
 	const id = useStore(state => state.id);
 
-	const [previewImage, setPreviewImage] = useState();
+	const [previewDocument, setPreviewDocument] = useState();
+	const [documentTitel, setDocumentTitel] = useState('');
 
-	const uploadImage = async event => {
+	const uploadDocument = async event => {
 		try {
 			const url = `https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`;
 			const file = event.target.files[0];
@@ -32,7 +33,7 @@ export default function ImgUpload() {
 				body: data,
 			});
 
-			setPreviewImage(await response.json());
+			setPreviewDocument(await response.json());
 		} catch (error) {
 			console.error(error.message);
 		}
@@ -40,9 +41,10 @@ export default function ImgUpload() {
 
 	const onSubmit = data => {
 		data.file = {
-			url: previewImage.url,
-			width: previewImage.width,
-			height: previewImage.height,
+			url: previewDocument.url,
+			width: previewDocument.width,
+			height: previewDocument.height,
+			titel: documentTitel,
 		};
 		console.log(data);
 	};
@@ -62,7 +64,7 @@ export default function ImgUpload() {
 				left="0"
 				zIndex="110"
 			>
-				{previewImage && (
+				{previewDocument && (
 					<StyledFlex
 						margin="8vh 0 0 0"
 						height="200px"
@@ -76,8 +78,8 @@ export default function ImgUpload() {
 						alignSelf="center"
 					>
 						<Image
-							src={previewImage.url}
-							alt={previewImage.url}
+							src={previewDocument.url}
+							alt={previewDocument.url}
 							layout="fill"
 							objectFit="cover"
 						/>
@@ -92,30 +94,39 @@ export default function ImgUpload() {
 					type="button"
 					onClick={event => {
 						event.preventDefault();
-						toggleAddCarImage();
+						toggleAddDocument();
 					}}
 				>
 					<SVGIcons variant="xBox" size="20px" color="var(--primary-color)" />
 				</StyledButton>
-				<StyledImgUpload onSubmit={onSubmit}>
-					{!previewImage && (
-						<label htmlFor="imageUpload">
+
+				<StyledFileUpload onSubmit={onSubmit}>
+					{!previewDocument && (
+						<label htmlFor="documentUpload">
 							<StyledFlex alignItems="center" cursor="pointer">
 								<SVGIcons
-									variant="uploadImage"
+									variant="fileUpload"
 									size="50px"
 									color="var(--primary-color)"
 								/>
 							</StyledFlex>
 						</label>
 					)}
-					<StyledInput id="imageUpload" type="file" onChange={uploadImage} />
+					<StyledInput id="documentUpload" type="file" onChange={uploadDocument} />
 					<StyledFlex
 						background="var(--transparent)"
 						alignItems="center"
 						justifyContent="center"
 					>
-						{previewImage ? (
+						<input
+							type="text"
+							placeholder="Titel eintragen..."
+							onInput={event => {
+								event.preventDefault();
+								setDocumentTitel(event.target.value);
+							}}
+						/>
+						{previewDocument ? (
 							<StyledButton
 								variant="outlined"
 								color="var(--primary-color)"
@@ -123,11 +134,12 @@ export default function ImgUpload() {
 								type="submit"
 								onClick={event => {
 									event.preventDefault();
-									toggleAddCarImage();
-									addCarImage(id, previewImage);
+									toggleAddDocument();
+									addDocument(id, previewDocument);
+									console.log(previewDocument);
 								}}
 							>
-								Bild hochladen
+								Dokument hochladen
 							</StyledButton>
 						) : (
 							<StyledButton
@@ -138,11 +150,11 @@ export default function ImgUpload() {
 								borderColor="grey"
 								type="submit"
 							>
-								Bild hochladen
+								Dokument hochladen
 							</StyledButton>
 						)}
 					</StyledFlex>
-				</StyledImgUpload>
+				</StyledFileUpload>
 			</StyledFlex>
 			<StyledFlex
 				background="var(--transparent)"
@@ -154,7 +166,7 @@ export default function ImgUpload() {
 				zIndex="101"
 				onClick={event => {
 					event.preventDefault();
-					toggleAddCarImage();
+					toggleAddDocument();
 				}}
 			/>
 		</>

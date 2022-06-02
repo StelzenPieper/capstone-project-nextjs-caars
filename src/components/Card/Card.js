@@ -6,7 +6,7 @@ import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledCard from './StyledCard';
 import _useStore from '../../lib/hooks/_useStore';
-import Image from 'next/image';
+import ImageSlider from '../ImageSlider/ImageSlider';
 
 export default function Card({ data }) {
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
@@ -15,8 +15,6 @@ export default function Card({ data }) {
 	const setVehicleName = useStore(state => state.setVehicleName);
 	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
 	const sortedVehicles = data.sort((a, b) => b.favorite - a.favorite);
-
-	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/`;
 
 	return (
 		<>
@@ -32,51 +30,30 @@ export default function Card({ data }) {
 						cursor="pointer"
 					>
 						<StyledCard
-							padding="10px 0 10px 0"
+							padding="20px 0 0 0"
 							cursor="pointer"
 							onClick={event => {
 								event.preventDefault();
 								setID(vehicle.caarsId);
 								toggleCarProfile(id);
-								console.log(id, carImages);
+								console.log(data);
 							}}
 						>
 							<StyledFlex
 								flexDirection="row"
 								flexWrap="wrap"
 								width="80%"
-								padding="0 10px 0 10px"
+								padding="0 10px 0 25px"
 							>
 								<Typography variant="h4" textDecoration="underline">
 									{vehicle.vehicleModelSeriesName}
 								</Typography>
 							</StyledFlex>
-							{vehicle.images.length > 0 && (
-								<StyledFlex
-									margin="2vh 0 0 0"
-									height="20vh"
-									width="100%"
-									borderRadius="none"
-									objectFit="cover"
-									overflow="hidden"
-									cursor="pointer"
-									alignContent="center"
-									justifyContent="center"
-									alignSelf="center"
-								>
-									<Image
-										key={vehicle.caarsId}
-										src={carImages + vehicle.images}
-										alt={carImages + vehicle.images}
-										layout="fill"
-										objectFit="cover"
-									/>
-								</StyledFlex>
-							)}
+
 							<StyledFlex
 								background="var(--transparent)"
 								alignItems="flex-start"
-								padding="10px 10px 0 10px"
+								padding="10px 10px 25px 25px"
 							>
 								<Typography variant="text" padding="3px">
 									VIN: {vehicle.vinValue}
@@ -84,17 +61,29 @@ export default function Card({ data }) {
 								<Typography variant="text" padding="3px">
 									Kraftstoff: {vehicle.engineType}
 								</Typography>
-								<Typography variant="text" padding="3px" margin="0 0 30px 0">
+								<Typography variant="text" padding="3px">
 									Leistung: {vehicle.kiloWattsTo} kW ({vehicle.horsePowerFrom} PS)
 								</Typography>
 							</StyledFlex>
 						</StyledCard>
+						{vehicle.images.length > 0 && (
+							<StyledFlex
+								height="30vh"
+								width="100%"
+								borderRadius="0 0 8px 8px"
+								objectFit="contain"
+								overflow="hidden"
+								cursor="pointer"
+							>
+								<ImageSlider data={vehicle} />
+							</StyledFlex>
+						)}
 						<FavoriteCar caarsId={vehicle.caarsId} />
 						<StyledButton
 							caarsId={vehicle.caarsId}
 							variant="favorite"
 							position="absolute"
-							bottom="5px"
+							bottom="30vh"
 							right="5px"
 							zIndex="10"
 							type="button"
