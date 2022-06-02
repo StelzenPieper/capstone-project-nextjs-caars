@@ -82,8 +82,9 @@ const StyledButton = styled.button`
 		`}
 
   &:disabled {
-		color: var(--tertiary-background);
-		background: var(--secondary-background);
+		color: ${({ color = 'var(--secondary-color)' }) => color};
+		background: ${({ background = 'var(--transparent)' }) => background};
+		border-color: ${({ borderColor = 'var(--secondary-color)' }) => borderColor};
 		cursor: not-allowed;
 	}
 `;

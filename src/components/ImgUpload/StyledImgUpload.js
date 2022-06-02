@@ -8,3 +8,12 @@ const StyledImgUpload = styled.form`
 `;
 
 export { StyledImgUpload };
+
+const StyledInput = styled.input`
+	display: none;
+	position: fixed;
+	top: -100%;
+	left: -100vw;
+`;
+
+export { StyledInput };

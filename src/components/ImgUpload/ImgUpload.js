@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { StyledImgUpload } from './StyledImgUpload';
+import { StyledImgUpload, StyledInput } from './StyledImgUpload';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledButton from '../../../styles/StyledButton';
 import _useStore from '../../lib/hooks/_useStore';
@@ -98,25 +98,47 @@ export default function ImgUpload() {
 					<SVGIcons variant="xBox" size="20px" color="var(--primary-color)" />
 				</StyledButton>
 				<StyledImgUpload onSubmit={onSubmit}>
-					<input type="file" onChange={uploadImage} />
+					<label htmlFor="imageUpload">
+						<StyledFlex alignItems="center" cursor="pointer">
+							<SVGIcons
+								variant="uploadImage"
+								size="50px"
+								color="var(--primary-color)"
+							/>
+						</StyledFlex>
+					</label>
+					<StyledInput id="imageUpload" type="file" onChange={uploadImage} />
 					<StyledFlex
 						background="var(--transparent)"
 						alignItems="center"
 						justifyContent="center"
 					>
-						<StyledButton
-							variant="outlined"
-							color="var(--primary-color)"
-							border="2px solid var(--primary-color)"
-							type="submit"
-							onClick={event => {
-								event.preventDefault();
-								toggleAddCarImage();
-								addCarImage(id, previewImage);
-							}}
-						>
-							Bild hochladen
-						</StyledButton>
+						{previewImage ? (
+							<StyledButton
+								variant="outlined"
+								color="var(--primary-color)"
+								border="2px solid var(--primary-color)"
+								type="submit"
+								onClick={event => {
+									event.preventDefault();
+									toggleAddCarImage();
+									addCarImage(id, previewImage);
+								}}
+							>
+								Bild hochladen
+							</StyledButton>
+						) : (
+							<StyledButton
+								disabled
+								variant="outlined"
+								color="grey"
+								background="var(--transparent)"
+								borderColor="grey"
+								type="submit"
+							>
+								Bild hochladen
+							</StyledButton>
+						)}
 					</StyledFlex>
 				</StyledImgUpload>
 			</StyledFlex>

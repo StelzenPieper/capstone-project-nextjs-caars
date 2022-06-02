@@ -84,18 +84,6 @@ const useStore = create(
 					),
 				}));
 			},
-
-			/*
-			addCarImage: (caarsId, previewImage) => {
-				set(state => ({
-					myVehicles: state.myVehicles.map(vehicle =>
-						vehicle.caarsId === caarsId
-							? { ...vehicle, images: [...[images], previewImage.public_id] }
-							: vehicle
-					),
-				}));
-			},
-			*/
 		}),
 		{ name: 'caars' }
 	)
