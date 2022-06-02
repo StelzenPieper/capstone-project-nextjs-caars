@@ -17,6 +17,7 @@ const StyledFlex = styled.div`
 	align-self: ${({ alignSelf = '' }) => alignSelf};
 	gap: ${({ gap = '0px' }) => gap};
 	flex-wrap: ${({ flexWrap = 'nowrap' }) => flexWrap};
+	flex: ${({ flex = '' }) => flex};
 
 	position: ${({ position = 'relative' }) => position};
 

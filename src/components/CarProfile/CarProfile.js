@@ -20,12 +20,12 @@ export default function CarProfile() {
 		<StyledFlex
 			width="100%"
 			height="100%"
-			padding="0 8vw 12vh 8vw"
+			padding="0 0 12vh 0"
 			justifyContent="flex-start"
 			alignItems="flex-start"
 			background="var(--secondary-background)"
 			zIndex="100"
-			overflow="scroll"
+			overflow="hidden"
 		>
 			<StyledButton
 				variant="favorite"
@@ -57,7 +57,7 @@ export default function CarProfile() {
 				<StyledFlex
 					margin="2vh 0 0 0"
 					height="100%"
-					width="120%"
+					width="100%"
 					borderRadius="none"
 					objectFit="contain"
 					overflow="hidden"
@@ -109,9 +109,8 @@ export default function CarProfile() {
 			</StyledFlex>
 			<StyledFlex
 				margin="30px 0 20px 0"
-				padding="2vh 0 0 0"
+				padding="2vh 0 0 8vw"
 				background="var(--transparent)"
-				//alignSelf="center"
 			>
 				<StyledFlex
 					background="var(--transparent)"

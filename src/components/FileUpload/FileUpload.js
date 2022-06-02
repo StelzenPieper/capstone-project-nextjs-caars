@@ -117,14 +117,16 @@ export default function FileUpload() {
 						alignItems="center"
 						justifyContent="center"
 					>
-						<input
-							type="text"
-							placeholder="Titel eintragen..."
-							onInput={event => {
-								event.preventDefault();
-								setDocumentTitel(event.target.value);
-							}}
-						/>
+						<StyledFlex>
+							<input
+								value={documentTitel}
+								type="text"
+								placeholder="Titel eingeben..."
+								onChange={event => {
+									setDocumentTitel(event.target.value);
+								}}
+							/>
+						</StyledFlex>
 						{previewDocument ? (
 							<StyledButton
 								variant="outlined"
