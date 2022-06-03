@@ -45,7 +45,6 @@ export default function FileUpload() {
 			width: previewDocument.width,
 			height: previewDocument.height,
 		};
-		console.log(data);
 	};
 
 	return (

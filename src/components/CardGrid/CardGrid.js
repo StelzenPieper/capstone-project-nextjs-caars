@@ -11,7 +11,12 @@ export default function CardGrid() {
 	return (
 		<>
 			{myVehicles.length > 0 && <CarFilter checkState={filterState} />}
-			<StyledFlex margin="4vh 10px 12vh 10px" gap="40px" alignItems="center">
+			<StyledFlex
+				margin="4vh 10px 12vh 10px"
+				gap="40px"
+				alignItems="center"
+				background="transprent"
+			>
 				{filterState ? <Card data={myFavoriteVehicles} /> : <Card data={myVehicles} />}
 			</StyledFlex>
 		</>

@@ -44,7 +44,6 @@ export default function ImgUpload() {
 			width: previewImage.width,
 			height: previewImage.height,
 		};
-		console.log(data);
 	};
 
 	return (

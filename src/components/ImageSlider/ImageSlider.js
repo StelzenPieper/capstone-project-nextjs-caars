@@ -6,7 +6,8 @@ import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 
 export default function ImageSlider({ data }) {
 	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/`;
-
+	const previewImage =
+		"url('https://images.unsplash.com/photo-1564890379370-2cf3df59dfb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')";
 	const [index, setIndex] = useState(0);
 
 	const imageArray = data.images.map(carImageKey => carImages + carImageKey);
@@ -51,12 +52,23 @@ export default function ImageSlider({ data }) {
 						</StyledButton>
 					</>
 				)}
-				<Image
-					src={imageArray[index]}
-					layout="fill"
-					objectFit="cover"
-					alt={imageArray[index]}
-				/>
+				{imageArray < 1 ? (
+					<StyledFlex
+						height="40vh"
+						width="100%"
+						backgroundImage={previewImage}
+						backgroundSize="cover"
+						backgroundRepeat="no-repeat"
+						backgroundPosition="center center"
+					/>
+				) : (
+					<Image
+						src={imageArray[index]}
+						layout="fill"
+						objectFit="cover"
+						alt={imageArray[index]}
+					/>
+				)}
 			</StyledFlex>
 		</StyledFlex>
 	);

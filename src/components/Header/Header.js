@@ -25,8 +25,8 @@ export default function HeaderItem() {
 				</StyledButton>
 			</Link>
 			<StyledFlex
-				width="60px"
-				height="60px"
+				width="6vh"
+				height="6vh"
 				borderRadius="60px"
 				margin="0 1rem 0 0"
 				border="2px solid hsl(264, 100%, 50%)"

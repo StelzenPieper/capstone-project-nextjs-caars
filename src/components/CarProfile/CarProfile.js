@@ -53,20 +53,20 @@ export default function CarProfile() {
 					{data.vehicleModelSeriesName}
 				</Typography>
 			</StyledFlex>
-			{data.images.length > 0 && (
-				<StyledFlex
-					margin="2vh 0 0 0"
-					height="100%"
-					width="100%"
-					borderRadius="none"
-					objectFit="contain"
-					overflow="hidden"
-					cursor="pointer"
-					alignSelf="center"
-				>
-					<ImageSlider data={data} />
-				</StyledFlex>
-			)}
+
+			<StyledFlex
+				margin="2vh 0 0 0"
+				height="100%"
+				width="100%"
+				borderRadius="none"
+				objectFit="contain"
+				overflow="hidden"
+				cursor="pointer"
+				alignSelf="center"
+			>
+				<ImageSlider data={data} />
+			</StyledFlex>
+
 			<StyledFlex
 				margin="30px 0 30px 0"
 				background="var(--transparent)"

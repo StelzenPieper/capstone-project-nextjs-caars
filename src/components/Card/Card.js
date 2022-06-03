@@ -36,7 +36,6 @@ export default function Card({ data }) {
 								event.preventDefault();
 								setID(vehicle.caarsId);
 								toggleCarProfile(id);
-								console.log(data);
 							}}
 						>
 							<StyledFlex
@@ -65,19 +64,17 @@ export default function Card({ data }) {
 								</Typography>
 							</StyledFlex>
 						</StyledCard>
+						<StyledFlex
+							height="30vh"
+							width="100%"
+							borderRadius="0"
+							objectFit="contain"
+							overflow="hidden"
+							cursor="pointer"
+						>
+							<ImageSlider data={vehicle} />
+						</StyledFlex>
 
-						{vehicle.images.length > 0 && (
-							<StyledFlex
-								height="30vh"
-								width="100%"
-								borderRadius="0"
-								objectFit="contain"
-								overflow="hidden"
-								cursor="pointer"
-							>
-								<ImageSlider data={vehicle} />
-							</StyledFlex>
-						)}
 						<FavoriteCar caarsId={vehicle.caarsId} />
 						<StyledButton
 							caarsId={vehicle.caarsId}
@@ -92,7 +89,6 @@ export default function Card({ data }) {
 								setID(vehicle.caarsId);
 								setVehicleName(vehicle.vehicleModelSeriesName);
 								toggleDeleteState();
-								console.log(vehicle.caarsId);
 							}}
 						>
 							<SVGIcons variant="trash" size="20px" color="red" />

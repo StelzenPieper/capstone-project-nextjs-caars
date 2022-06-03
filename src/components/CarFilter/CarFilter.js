@@ -8,8 +8,8 @@ export default function CarFilter({ checkState }) {
 	const toggleFilter = useStore(state => state.toggleFilter);
 
 	return (
-		<StyledDiv margin="6vh 0 0 0 ">
-			<StyledDiv position="relative">
+		<StyledDiv margin="6vh 0 0 0 " height="auto" background="var(--transparent)">
+			<StyledDiv position="relative" background="var(--transparent)">
 				<StyledCheckBox
 					checked={checkState}
 					id="checkbox"
