@@ -36,7 +36,6 @@ export default function Card({ data }) {
 								event.preventDefault();
 								setID(vehicle.caarsId);
 								toggleCarProfile(id);
-								console.log(data);
 							}}
 						>
 							<StyledFlex
@@ -92,7 +91,6 @@ export default function Card({ data }) {
 								setID(vehicle.caarsId);
 								setVehicleName(vehicle.vehicleModelSeriesName);
 								toggleDeleteState();
-								console.log(vehicle.caarsId);
 							}}
 						>
 							<SVGIcons variant="trash" size="20px" color="red" />
