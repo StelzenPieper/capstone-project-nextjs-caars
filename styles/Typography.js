@@ -38,6 +38,7 @@ const StyledText = styled.p`
 	text-decoration: ${({ textDecoration = 'none' }) => textDecoration};
 	color: ${({ color = 'black' }) => color};
 	text-align: ${({ textAlign = '' }) => textAlign};
+	line-height: ${({ lineHeight = '' }) => lineHeight};
 `;
 const StyledP = styled.p`
 	font-size: 1rem;

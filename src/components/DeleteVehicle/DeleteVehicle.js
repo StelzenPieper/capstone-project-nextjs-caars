@@ -32,7 +32,6 @@ export default function DeleteVehicle() {
 					onClick={event => {
 						event.preventDefault();
 						deleteVehicle(id);
-						console.log(id);
 						toggleDeleteState();
 					}}
 				>
