@@ -3,16 +3,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import StyledButton from '../../../styles/StyledButton';
 import StyledFlex from '../../../styles/StyledFlex';
+import _useStore from '../../lib/hooks/_useStore';
 
 export default function HeaderItem() {
 	const profileImgLoader = ({ randomizer }) => {
 		return `https://source.unsplash.com/random/?${randomizer}`;
 	};
 
+	const CarProfileState = _useStore(state => state.CarProfileState);
+	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
+
+	const handleHomeClick = () => {
+		if (CarProfileState) toggleCarProfile();
+	};
+
 	return (
 		<StyledHeader>
 			<Link passHref href="/">
-				<StyledButton type="button" variant="logo">
+				<StyledButton type="button" variant="logo" onClick={handleHomeClick}>
 					caars
 				</StyledButton>
 			</Link>

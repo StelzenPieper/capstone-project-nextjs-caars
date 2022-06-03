@@ -16,9 +16,11 @@ export default function Home() {
 			ssr: false, // This line important.
 		}
 	);
+
 	const CarProfile = dynamic(() => import('../src/components/CarProfile/CarProfile'), {
 		ssr: false, // This line important.
 	});
+
 	const CarProfileState = _useStore(state => state.CarProfileState);
 
 	const DeleteVehicle = dynamic(() => import('../src/components/DeleteVehicle/DeleteVehicle'), {

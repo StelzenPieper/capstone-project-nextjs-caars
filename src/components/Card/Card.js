@@ -49,7 +49,6 @@ export default function Card({ data }) {
 									{vehicle.vehicleModelSeriesName}
 								</Typography>
 							</StyledFlex>
-
 							<StyledFlex
 								background="var(--transparent)"
 								alignItems="flex-start"
@@ -66,6 +65,7 @@ export default function Card({ data }) {
 								</Typography>
 							</StyledFlex>
 						</StyledCard>
+
 						{vehicle.images.length > 0 && (
 							<StyledFlex
 								height="30vh"
