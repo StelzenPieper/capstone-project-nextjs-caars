@@ -22,30 +22,35 @@ export default function ImageSlider({ data }) {
 	}
 
 	return (
-		<StyledFlex height="40vh" width="100%" overflow="hidden" cursor="pointer" objectFit="cover">
+		<StyledFlex height="40vh" width="100%" overflow="hidden" objectFit="cover">
 			<StyledFlex flexDirection="row" justifyContent="space-between" alignContent="center">
-				<StyledButton
-					type="button"
-					variant="favorite"
-					position="absolute"
-					top="38%"
-					left="5px"
-					zIndex="10"
-					onClick={() => setIndex(count => loop(count - 1))}
-				>
-					<SVGIcons variant="arrowLeft" color="white" />
-				</StyledButton>
-				<StyledButton
-					type="button"
-					variant="favorite"
-					position="absolute"
-					top="38%"
-					right="5px"
-					zIndex="10"
-					onClick={() => setIndex(count => loop(count + 1))}
-				>
-					<SVGIcons variant="arrowRight" color="white" />
-				</StyledButton>
+				{imageArray.length > 1 && (
+					<>
+						<StyledButton
+							type="button"
+							variant="favorite"
+							position="absolute"
+							top="38%"
+							left="5px"
+							zIndex="10"
+							onClick={() => setIndex(count => loop(count - 1))}
+						>
+							<SVGIcons variant="arrowLeft" color="white" />
+						</StyledButton>
+
+						<StyledButton
+							type="button"
+							variant="favorite"
+							position="absolute"
+							top="38%"
+							right="5px"
+							zIndex="10"
+							onClick={() => setIndex(count => loop(count + 1))}
+						>
+							<SVGIcons variant="arrowRight" color="white" />
+						</StyledButton>
+					</>
+				)}
 				<Image
 					src={imageArray[index]}
 					layout="fill"

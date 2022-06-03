@@ -137,7 +137,6 @@ export default function FileUpload() {
 									event.preventDefault();
 									toggleAddDocument();
 									addDocument(id, previewDocument, documentTitel);
-									console.log(previewDocument, documentTitel);
 								}}
 							>
 								Dokument hochladen
