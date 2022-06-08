@@ -39,11 +39,18 @@ export default function Home() {
 	});
 	const AddDocumentState = _useStore(state => state.AddDocumentState);
 
+	const UserProfile = dynamic(() => import('../src/components/UserProfile/UserProfile'), {
+		ssr: false, // This line important.
+	});
+
+	const userProfileState = _useStore(state => state.userProfileState);
+
 	return (
 		<>
 			{deleteState && <DeleteVehicle />}
 			<InvalidVinMessage />
 			<AddCarModal />
+			{userProfileState && <UserProfile />}
 			{!CarProfileState && <CardGrid />}
 			{CarProfileState && <CarProfile />}
 			{AddCarImageState && <ImgUpload />}

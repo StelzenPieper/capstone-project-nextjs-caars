@@ -25,6 +25,7 @@ export default function Typography({ children, variant, component, ...rest }) {
 
 const StyledH4 = styled.h4`
 	margin: 0;
+	padding: ${({ padding = '0px' }) => padding};
 	font-size: 1.1rem;
 	font-weight: 400;
 	text-decoration: ${({ textDecoration = 'none' }) => textDecoration};

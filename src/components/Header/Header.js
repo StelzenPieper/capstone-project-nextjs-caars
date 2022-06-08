@@ -34,14 +34,16 @@ export default function HeaderItem() {
 				overflow="hidden"
 				cursor="pointer"
 			>
-				<Image
-					loader={profileImgLoader}
-					src="profileImage"
-					randomizer="person"
-					alt="Picture of the author"
-					layout="fill"
-					objectFit="cover"
-				/>
+				<Link passHref href="/userProfile">
+					<Image
+						loader={profileImgLoader}
+						src="profileImage"
+						randomizer="person"
+						alt="Picture of the author"
+						layout="fill"
+						objectFit="cover"
+					/>
+				</Link>
 			</StyledFlex>
 		</StyledHeader>
 	);
