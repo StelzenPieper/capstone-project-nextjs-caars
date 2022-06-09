@@ -3,10 +3,13 @@ import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
 import FavoriteCar from '../FavoriteCar/FavoriteCar';
 import StyledButton from '../../../styles/StyledButton';
-import StyledFlex from '../../../styles/StyledFlex';
-import StyledCard from './StyledCard';
+import StyledCard from '../UI/Card/StyledCard';
 import _useStore from '../../lib/hooks/_useStore';
 import ImageSlider from '../ImageSlider/ImageSlider';
+import StyledCardWrapper from '../UI/Card/StyledCardWrapper';
+import StyledCardHeaderWrapper from '../UI/Card/StyledCardHeaderWrapper';
+import StyledCardContentWrapper from '../UI/Card/StyledCardContentWrapper';
+import StyledImageWrapper from '../UI/Card/StyledImageWrapper';
 
 export default function Card({ data }) {
 	const toggleDeleteState = useStore(state => state.toggleDeleteState);
@@ -20,39 +23,20 @@ export default function Card({ data }) {
 		<>
 			{sortedVehicles.map(vehicle => {
 				return (
-					<StyledFlex
-						key={vehicle.caarsId}
-						width="80%"
-						height="auto"
-						borderRadius="8px"
-						boxShadow="var(--box-shadow)"
-						gap="5px"
-						cursor="pointer"
-					>
+					<StyledCardWrapper key={vehicle.caarsId}>
 						<StyledCard
-							padding="20px 0 0 0"
-							cursor="pointer"
 							onClick={event => {
 								event.preventDefault();
 								setID(vehicle.caarsId);
 								toggleCarProfile(id);
 							}}
 						>
-							<StyledFlex
-								flexDirection="row"
-								flexWrap="wrap"
-								width="80%"
-								padding="0 10px 0 25px"
-							>
+							<StyledCardHeaderWrapper>
 								<Typography variant="h4" textDecoration="underline">
 									{vehicle.vehicleModelSeriesName}
 								</Typography>
-							</StyledFlex>
-							<StyledFlex
-								background="var(--transparent)"
-								alignItems="flex-start"
-								padding="10px 10px 25px 25px"
-							>
+							</StyledCardHeaderWrapper>
+							<StyledCardContentWrapper>
 								<Typography variant="text" padding="3px">
 									VIN: {vehicle.vinValue}
 								</Typography>
@@ -62,21 +46,19 @@ export default function Card({ data }) {
 								<Typography variant="text" padding="3px">
 									Leistung: {vehicle.kiloWattsTo} kW ({vehicle.horsePowerFrom} PS)
 								</Typography>
-							</StyledFlex>
+							</StyledCardContentWrapper>
 						</StyledCard>
+						<StyledImageWrapper
+							height="30vh"
+							width="100%"
+							borderRadius="0"
+							objectFit="contain"
+							overflow="hidden"
+							cursor="pointer"
+						>
+							<ImageSlider data={vehicle} />
+						</StyledImageWrapper>
 
-						{vehicle.images.length > 0 && (
-							<StyledFlex
-								height="30vh"
-								width="100%"
-								borderRadius="0"
-								objectFit="contain"
-								overflow="hidden"
-								cursor="pointer"
-							>
-								<ImageSlider data={vehicle} />
-							</StyledFlex>
-						)}
 						<FavoriteCar caarsId={vehicle.caarsId} />
 						<StyledButton
 							caarsId={vehicle.caarsId}
@@ -95,7 +77,7 @@ export default function Card({ data }) {
 						>
 							<SVGIcons variant="trash" size="20px" color="red" />
 						</StyledButton>
-					</StyledFlex>
+					</StyledCardWrapper>
 				);
 			})}
 		</>

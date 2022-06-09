@@ -7,7 +7,14 @@ const StyledFlex = styled.div`
 	height: ${({ height = '100%' }) => height};
 	border: ${({ border = 'none' }) => border};
 	border-radius: ${({ borderRadius = '0px' }) => borderRadius};
+
 	background: ${({ background = 'var(--primary-background)' }) => background};
+	background-image: ${({ backgroundImage = '' }) => backgroundImage};
+	background-size: ${({ backgroundSize = '' }) => backgroundSize};
+	background-repeat: ${({ backgroundRepeat = '' }) => backgroundRepeat};
+	background-position: ${({ backgroundPosition = '' }) => backgroundPosition};
+
+	opacity: ${({ opacity = '' }) => opacity};
 	box-shadow: ${({ boxShadow = 'none' }) => boxShadow};
 
 	display: flex;

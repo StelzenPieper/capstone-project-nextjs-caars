@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { StyledImgUpload, StyledInput } from './StyledImgUpload';
+import StyledInput from '../UI/ImgUpload/StyledImgUploadInput.js';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledButton from '../../../styles/StyledButton';
 import _useStore from '../../lib/hooks/_useStore';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
+import StyledImgUploadForm from '../UI/ImgUpload/StyledImgUploadForm';
+import StyledImgUploadWrapper from '../UI/ImgUpload/StyledImgUploadWrapper.js';
 
 export default function ImgUpload() {
 	const CLOUD = process.env.CLOUDINARY_CLOUD;
@@ -48,19 +50,7 @@ export default function ImgUpload() {
 
 	return (
 		<>
-			<StyledFlex
-				height="65vh"
-				background="var(--secondary-color)"
-				justifyContent="center"
-				alignSelf="center"
-				borderRadius="8px"
-				position="fixed"
-				top="0"
-				right="0"
-				bottom="0"
-				left="0"
-				zIndex="110"
-			>
+			<StyledImgUploadWrapper>
 				{previewImage && (
 					<StyledFlex
 						margin="8vh 0 0 0"
@@ -96,7 +86,7 @@ export default function ImgUpload() {
 				>
 					<SVGIcons variant="xBox" size="20px" color="var(--primary-color)" />
 				</StyledButton>
-				<StyledImgUpload onSubmit={onSubmit}>
+				<StyledImgUploadForm onSubmit={onSubmit}>
 					{!previewImage && (
 						<label htmlFor="imageUpload">
 							<StyledFlex alignItems="center" cursor="pointer">
@@ -141,8 +131,8 @@ export default function ImgUpload() {
 							</StyledButton>
 						)}
 					</StyledFlex>
-				</StyledImgUpload>
-			</StyledFlex>
+				</StyledImgUploadForm>
+			</StyledImgUploadWrapper>
 			<StyledFlex
 				background="var(--transparent)"
 				position="fixed"

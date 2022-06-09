@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StyledForm from './AddCarForm.styled';
+import StyledForm from '../UI/Form/AddCarForm.styled';
 import StyledButton from '../../../styles/StyledButton';
 import useStore from '../../lib/hooks/useStore';
 

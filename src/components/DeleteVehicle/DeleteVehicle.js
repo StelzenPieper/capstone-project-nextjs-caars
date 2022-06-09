@@ -1,9 +1,9 @@
-import StyledDeleteVehicle from './StyledDeleteVehicle';
+import StyledDeleteVehicle from '../UI/DeleteVehicle/StyledDeleteVehicle';
 import useStore from '../../lib/hooks/useStore';
 import SVGIcon from '../../assets/SVGIcon/SVGIcons';
 import StyledButton from '../../../styles/StyledButton';
 import Typography from '../../../styles/Typography';
-import StyledFlex from '../../../styles/StyledFlex';
+import StyledDeleteVehicleButtonRow from '../UI/DeleteVehicle/StyledDeleteVehicleButtonRow';
 
 export default function DeleteVehicle() {
 	const deleteVehicle = useStore(state => state.deleteVehicle);
@@ -20,12 +20,7 @@ export default function DeleteVehicle() {
 				</Typography>{' '}
 				wirklich löschen?
 			</Typography>
-			<StyledFlex
-				flexDirection="row"
-				justifyContent="space-evenly"
-				gap="20px"
-				margin="20px 0 10px 0"
-			>
+			<StyledDeleteVehicleButtonRow>
 				<StyledButton
 					variant="favorite"
 					type="button"
@@ -40,7 +35,7 @@ export default function DeleteVehicle() {
 				<StyledButton variant="favorite" type="button" onClick={() => toggleDeleteState()}>
 					<SVGIcon variant="xBox" size="20px" />
 				</StyledButton>
-			</StyledFlex>
+			</StyledDeleteVehicleButtonRow>
 		</StyledDeleteVehicle>
 	);
 }

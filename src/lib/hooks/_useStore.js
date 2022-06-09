@@ -7,6 +7,8 @@ const _useStore = create(set => ({
 	toggleAddCarImage: () => set(state => ({ AddCarImageState: !state.AddCarImageState })),
 	AddDocumentState: false,
 	toggleAddDocument: () => set(state => ({ AddDocumentState: !state.AddDocumentState })),
+	userProfileState: false,
+	toggleUserProfileState: () => set(state => ({ userProfileState: !state.userProfileState })),
 }));
 
 export default _useStore;

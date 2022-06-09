@@ -1,4 +1,4 @@
-import StyledHeader from './Header.styled';
+import StyledHeader from '../UI/Header/StyledHeader';
 import Image from 'next/image';
 import Link from 'next/link';
 import StyledButton from '../../../styles/StyledButton';
@@ -25,8 +25,8 @@ export default function HeaderItem() {
 				</StyledButton>
 			</Link>
 			<StyledFlex
-				width="60px"
-				height="60px"
+				width="6vh"
+				height="6vh"
 				borderRadius="60px"
 				margin="0 1rem 0 0"
 				border="2px solid hsl(264, 100%, 50%)"
@@ -34,14 +34,16 @@ export default function HeaderItem() {
 				overflow="hidden"
 				cursor="pointer"
 			>
-				<Image
-					loader={profileImgLoader}
-					src="profileImage"
-					randomizer="person"
-					alt="Picture of the author"
-					layout="fill"
-					objectFit="cover"
-				/>
+				<Link passHref href="/userProfile">
+					<Image
+						loader={profileImgLoader}
+						src="profileImage"
+						randomizer="person"
+						alt="Picture of the author"
+						layout="fill"
+						objectFit="cover"
+					/>
+				</Link>
 			</StyledFlex>
 		</StyledHeader>
 	);

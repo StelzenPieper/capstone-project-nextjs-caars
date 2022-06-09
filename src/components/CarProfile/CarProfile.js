@@ -5,6 +5,11 @@ import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
 import _useStore from '../../lib/hooks/_useStore';
 import ImageSlider from '../ImageSlider/ImageSlider';
+import StyledCarProfileContentWrapper from '../UI/CarProfile/StyledCarProfileContentWrapper';
+import StyledCarProfileDocumentHeader from '../UI/CarProfile/StyledCarProfileDocumentHeader';
+import StyledCarProfileDocumentList from '../UI/CarProfile/StyledCarProfileDocumentList';
+import StyledCarProfileImageWrapper from '../UI/CarProfile/StyledCarProfileImageWrapper';
+import StyledCarProfileWrapper from '../UI/CarProfile/StyledCarProfileWrapper';
 
 export default function CarProfile() {
 	const toggleCarProfile = _useStore(state => state.toggleCarProfile);
@@ -17,16 +22,7 @@ export default function CarProfile() {
 	const docuemntUrl = `https://res.cloudinary.com/caarsde/image/upload/v1654174773/`;
 
 	return (
-		<StyledFlex
-			width="100%"
-			height="100%"
-			padding="0 0 12vh 0"
-			justifyContent="flex-start"
-			alignItems="flex-start"
-			background="var(--secondary-background)"
-			zIndex="100"
-			overflow="hidden"
-		>
+		<StyledCarProfileWrapper>
 			<StyledButton
 				variant="favorite"
 				position="absolute"
@@ -41,32 +37,18 @@ export default function CarProfile() {
 			>
 				<SVGIcons variant="xBox" size="20px" color="white" />
 			</StyledButton>
-			<StyledFlex
-				width="100%"
-				height="100%"
+			<Typography
+				variant="h4"
 				padding="6vh 8vw 0 8vw"
-				justifyContent="flex-start"
-				alignItems="flex-start"
-				background="var(--secondary-background)"
+				textDecoration="underline"
+				color="white"
 			>
-				<Typography variant="h4" textDecoration="underline" color="white">
-					{data.vehicleModelSeriesName}
-				</Typography>
-			</StyledFlex>
-			{data.images.length > 0 && (
-				<StyledFlex
-					margin="2vh 0 0 0"
-					height="100%"
-					width="100%"
-					borderRadius="none"
-					objectFit="contain"
-					overflow="hidden"
-					cursor="pointer"
-					alignSelf="center"
-				>
-					<ImageSlider data={data} />
-				</StyledFlex>
-			)}
+				{data.vehicleModelSeriesName}
+			</Typography>
+			<StyledCarProfileImageWrapper>
+				<ImageSlider data={data} />
+			</StyledCarProfileImageWrapper>
+
 			<StyledFlex
 				margin="30px 0 30px 0"
 				background="var(--transparent)"
@@ -88,7 +70,7 @@ export default function CarProfile() {
 					<SVGIcons variant="imageUpload" />
 				</StyledButton>
 			</StyledFlex>
-			<StyledFlex padding="0 2vw 0 8vw" background="var(--secondary-background)">
+			<StyledCarProfileContentWrapper>
 				<Typography variant="text" padding="3px" color="white" lineHeight="25px">
 					VIN: {data.vinValue}
 					<br />
@@ -106,37 +88,27 @@ export default function CarProfile() {
 					<br />
 					Zylinder: {data.cylinders}
 				</Typography>
-			</StyledFlex>
-			<StyledFlex
-				margin="30px 0 20px 0"
-				padding="2vh 0 0 8vw"
-				background="var(--transparent)"
-			>
-				<StyledFlex
-					background="var(--transparent)"
-					flexDirection="row"
-					gap="40px"
-					alignItems="center"
+			</StyledCarProfileContentWrapper>
+			<StyledCarProfileDocumentHeader>
+				<StyledButton
+					variant="outlined"
+					color="var(--primary-color)"
+					background="var(--secondary-color)"
+					type="button"
+					onClick={event => {
+						event.preventDefault();
+						toggleAddDocument();
+					}}
 				>
-					<StyledButton
-						variant="outlined"
-						color="var(--primary-color)"
-						background="var(--secondary-color)"
-						type="button"
-						onClick={event => {
-							event.preventDefault();
-							toggleAddDocument();
-						}}
-					>
-						<SVGIcons variant="fileUpload" />
-					</StyledButton>
-					<Typography variant="h4" color="white">
-						Meine Dokumente:
-					</Typography>
-				</StyledFlex>
-			</StyledFlex>
+					<SVGIcons variant="fileUpload" />
+				</StyledButton>
+				<Typography variant="h4" color="white">
+					Meine Dokumente:
+				</Typography>
+			</StyledCarProfileDocumentHeader>
+
 			{data.documents.length > 0 && (
-				<StyledFlex background="var(--transparent)" width="100%" alignItems="center">
+				<StyledCarProfileDocumentList>
 					{data.documents.map(document => {
 						return (
 							<StyledButton
@@ -154,8 +126,8 @@ export default function CarProfile() {
 							</StyledButton>
 						);
 					})}
-				</StyledFlex>
+				</StyledCarProfileDocumentList>
 			)}
-		</StyledFlex>
+		</StyledCarProfileWrapper>
 	);
 }

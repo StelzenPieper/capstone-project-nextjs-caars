@@ -1,8 +1,12 @@
 import AddCarForm from '../AddCarForm/AddCarForm';
 import Typography from '../../../styles/Typography';
 import StyledButton from '../../../styles/StyledButton';
-import StyledFlex from '../../../styles/StyledFlex';
 import useStore from '../../lib/hooks/useStore';
+import StyledAddCarModalWrapper from '../UI/Modals/StyledAddCarModalWrapper';
+import StyledAddCarModalBox from '../UI/Modals/StyledAddCarModalBox';
+import StyledAddCarModalHeader from '../UI/Modals/StyledAddCarModalHeader';
+import StyledAddCarModalFormBox from '../UI/Modals/StyledAddCarModalFormBox';
+import StyledAddCarModalFooter from '../UI/Modals/StyledAddCarModalFooter';
 
 function AddCarModal() {
 	const toggleModalState = useStore(state => state.toggleModalState);
@@ -12,16 +16,7 @@ function AddCarModal() {
 
 	if (modalState) {
 		return (
-			<StyledFlex
-				justifyContent="center"
-				alignItems="center"
-				position="fixed"
-				top="0"
-				right="0"
-				bottom="0"
-				left="0"
-				background="var(--transparent)"
-				zIndex="100"
+			<StyledAddCarModalWrapper
 				onClick={() => {
 					toggleModalState();
 					if (!vinValidity) {
@@ -29,31 +24,22 @@ function AddCarModal() {
 					}
 				}}
 			>
-				<StyledFlex
-					width="85%"
-					height="auto"
-					margin="20px"
-					borderRadius="8px"
-					boxShadow="var(--box-shadow)"
-					justifyContent="center"
-					alignItems="center"
-					onClick={event => event.stopPropagation()}
-				>
-					<StyledFlex margin="40px 0 0 0">
+				<StyledAddCarModalBox onClick={event => event.stopPropagation()}>
+					<StyledAddCarModalHeader>
 						<Typography textAlign="center" variant="h4">
 							Fahrzeug hinzufügen
 						</Typography>
-					</StyledFlex>
-					<StyledFlex>
+					</StyledAddCarModalHeader>
+					<StyledAddCarModalFormBox>
 						<AddCarForm />
-					</StyledFlex>
-					<StyledFlex margin="0 0 40px 0">
+					</StyledAddCarModalFormBox>
+					<StyledAddCarModalFooter>
 						<StyledButton variant="text" type="button" onClick={toggleModalState}>
 							abbrechen
 						</StyledButton>
-					</StyledFlex>
-				</StyledFlex>
-			</StyledFlex>
+					</StyledAddCarModalFooter>
+				</StyledAddCarModalBox>
+			</StyledAddCarModalWrapper>
 		);
 	} else {
 		return null;

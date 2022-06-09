@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { StyledFileUpload, StyledInput } from './StyledFileUpload';
+import { StyledFileUpload, StyledInput } from '../UI/FileUpload/StyledFileUpload';
 import StyledFlex from '../../../styles/StyledFlex';
 import StyledButton from '../../../styles/StyledButton';
 import _useStore from '../../lib/hooks/_useStore';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';
+import StyledFileUploadWrapper from '../UI/FileUpload/StyledFileUploadWrapper';
+import StyledFileUploadPreviewWrapper from '../UI/FileUpload/StyledFileUploadPreviewWrapper';
 
 export default function FileUpload() {
 	const CLOUD = process.env.CLOUDINARY_CLOUD;
@@ -49,39 +51,16 @@ export default function FileUpload() {
 
 	return (
 		<>
-			<StyledFlex
-				height="65vh"
-				background="var(--secondary-color)"
-				justifyContent="center"
-				alignSelf="center"
-				borderRadius="8px"
-				position="fixed"
-				top="0"
-				right="0"
-				bottom="0"
-				left="0"
-				zIndex="110"
-			>
+			<StyledFileUploadWrapper>
 				{previewDocument && (
-					<StyledFlex
-						margin="8vh 0 0 0"
-						height="200px"
-						width="300px"
-						borderRadius="8px"
-						objectFit="cover"
-						overflow="hidden"
-						cursor="pointer"
-						alignContent="center"
-						justifyContent="center"
-						alignSelf="center"
-					>
+					<StyledFileUploadPreviewWrapper>
 						<Image
 							src={previewDocument.url}
 							alt={previewDocument.url}
 							layout="fill"
 							objectFit="cover"
 						/>
-					</StyledFlex>
+					</StyledFileUploadPreviewWrapper>
 				)}
 				<StyledButton
 					variant="favorite"
@@ -154,7 +133,7 @@ export default function FileUpload() {
 						)}
 					</StyledFlex>
 				</StyledFileUpload>
-			</StyledFlex>
+			</StyledFileUploadWrapper>
 			<StyledFlex
 				background="var(--transparent)"
 				position="fixed"

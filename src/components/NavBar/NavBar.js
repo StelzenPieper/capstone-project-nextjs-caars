@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import StyledNavBar from './NavBar.styled';
+import StyledNavBar from '../UI/NavBar/StyledNavBar';
 import StyledButton from '../../../styles/StyledButton';
 import SVGIcon from '../../assets/SVGIcon/SVGIcons';
 import useStore from '../../lib/hooks/useStore';

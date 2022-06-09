@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import StyledFlex from '../../../styles/StyledFlex';
 import StyledButton from '../../../styles/StyledButton';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
+import StyledImageSliderWrapper from '../UI/ImageSlider/StyledImageSlyderWrapper';
+import StyledImageSlider from '../UI/ImageSlider/StyledImageSlyder';
+import StyledPreviewIamgeWrapper from '../UI/ImageSlider/StyledPreviewImageWrapper';
 
 export default function ImageSlider({ data }) {
 	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/`;
-
+	const previewImage =
+		"url('https://images.unsplash.com/photo-1564890379370-2cf3df59dfb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')";
 	const [index, setIndex] = useState(0);
 
 	const imageArray = data.images.map(carImageKey => carImages + carImageKey);
@@ -22,8 +25,8 @@ export default function ImageSlider({ data }) {
 	}
 
 	return (
-		<StyledFlex height="40vh" width="100%" overflow="hidden" objectFit="cover">
-			<StyledFlex flexDirection="row" justifyContent="space-between" alignContent="center">
+		<StyledImageSliderWrapper>
+			<StyledImageSlider>
 				{imageArray.length > 1 && (
 					<>
 						<StyledButton
@@ -51,13 +54,17 @@ export default function ImageSlider({ data }) {
 						</StyledButton>
 					</>
 				)}
-				<Image
-					src={imageArray[index]}
-					layout="fill"
-					objectFit="cover"
-					alt={imageArray[index]}
-				/>
-			</StyledFlex>
-		</StyledFlex>
+				{imageArray < 1 ? (
+					<StyledPreviewIamgeWrapper backgroundImage={previewImage} />
+				) : (
+					<Image
+						src={imageArray[index]}
+						layout="fill"
+						objectFit="cover"
+						alt={imageArray[index]}
+					/>
+				)}
+			</StyledImageSlider>
+		</StyledImageSliderWrapper>
 	);
 }
