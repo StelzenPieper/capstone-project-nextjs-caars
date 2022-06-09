@@ -1,4 +1,4 @@
-import StyledInvalidVinMessage from '../InvalidVinMessage/StyledInvalidVinMessage';
+import StyledInvalidVinMessage from '../UI/InvalidVinMessage/StyledInvalidVinMessage';
 import Typography from '../../../styles/Typography';
 import useStore from '../../lib/hooks/useStore';
 

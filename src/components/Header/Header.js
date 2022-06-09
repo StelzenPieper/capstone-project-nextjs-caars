@@ -1,4 +1,4 @@
-import StyledHeader from './Header.styled';
+import StyledHeader from '../UI/Header/StyledHeader';
 import Image from 'next/image';
 import Link from 'next/link';
 import StyledButton from '../../../styles/StyledButton';

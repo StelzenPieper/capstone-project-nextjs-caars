@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import StyledFlex from '../../../styles/StyledFlex';
 import StyledButton from '../../../styles/StyledButton';
 import SVGIcons from '../../assets/SVGIcon/SVGIcons';
+import StyledImageSliderWrapper from '../UI/ImageSlider/StyledImageSlyderWrapper';
+import StyledImageSlider from '../UI/ImageSlider/StyledImageSlyder';
+import StyledPreviewIamgeWrapper from '../UI/ImageSlider/StyledPreviewImageWrapper';
 
 export default function ImageSlider({ data }) {
 	const carImages = `https://res.cloudinary.com/caarsde/image/upload/v1654112534/`;
@@ -23,8 +25,8 @@ export default function ImageSlider({ data }) {
 	}
 
 	return (
-		<StyledFlex height="40vh" width="100%" overflow="hidden" objectFit="cover">
-			<StyledFlex flexDirection="row" justifyContent="space-between" alignContent="center">
+		<StyledImageSliderWrapper>
+			<StyledImageSlider>
 				{imageArray.length > 1 && (
 					<>
 						<StyledButton
@@ -53,14 +55,7 @@ export default function ImageSlider({ data }) {
 					</>
 				)}
 				{imageArray < 1 ? (
-					<StyledFlex
-						height="40vh"
-						width="100%"
-						backgroundImage={previewImage}
-						backgroundSize="cover"
-						backgroundRepeat="no-repeat"
-						backgroundPosition="center center"
-					/>
+					<StyledPreviewIamgeWrapper backgroundImage={previewImage} />
 				) : (
 					<Image
 						src={imageArray[index]}
@@ -69,7 +64,7 @@ export default function ImageSlider({ data }) {
 						alt={imageArray[index]}
 					/>
 				)}
-			</StyledFlex>
-		</StyledFlex>
+			</StyledImageSlider>
+		</StyledImageSliderWrapper>
 	);
 }
